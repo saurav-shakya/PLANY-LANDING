@@ -4,10 +4,82 @@ export const STORE_LINKS = {
 };
 
 export const NAV_LINKS = [
-  { label: "Features", href: "#features" },
-  { label: "How it works", href: "#product" },
-  { label: "FAQ", href: "#faq" },
-];
+  { label: "Product", href: "/#product" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Download", href: "/download" },
+] as const;
+
+export const SOCIAL_LINKS = [
+  {
+    id: "x",
+    label: "X / Twitter",
+    description: "Stay up to date on our latest releases",
+    href: "https://x.com/planydotspace",
+  },
+  {
+    id: "linkedin",
+    label: "LinkedIn",
+    description: "Follow our journey and team updates",
+    href: "https://www.linkedin.com/company/planydotspace/",
+  },
+  {
+    id: "instagram",
+    label: "Instagram",
+    description: "Behind the scenes and product moments",
+    href: "https://instagram.com/plany.space",
+  },
+  {
+    id: "youtube",
+    label: "YouTube",
+    description: "Tutorials, demos, and feature walkthroughs",
+    href: "https://youtube.com/@planyspace",
+  },
+] as const;
+
+export const PRICING_TIERS = [
+  {
+    name: "Free",
+    price: "$0",
+    period: "forever",
+    description: "Everything you need to plan your day.",
+    features: [
+      "Visual day timeline",
+      "Time-based reminders",
+      "Location nudges",
+      "Basic AI check-ins",
+    ],
+    cta: "Get started",
+    highlighted: false,
+  },
+  {
+    name: "Pro",
+    price: "$4.99",
+    period: "/ month",
+    description: "For people who want deeper accountability.",
+    features: [
+      "All Free features",
+      "Advanced AI tones",
+      "Weekly insights",
+      "Priority support",
+    ],
+    cta: "Start free trial",
+    highlighted: true,
+  },
+  {
+    name: "Team",
+    price: "$12",
+    period: "/ user / mo",
+    description: "Shared planning for small teams.",
+    features: [
+      "All Pro features",
+      "Shared timelines",
+      "Team accountability",
+      "Admin dashboard",
+    ],
+    cta: "Contact us",
+    highlighted: false,
+  },
+] as const;
 
 export const HERO_CHIPS = [
   "Walk · 19 min",
