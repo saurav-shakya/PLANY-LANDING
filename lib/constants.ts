@@ -150,27 +150,50 @@ export type ToneId = "hard" | "normal" | "motivated" | "professional";
 export const AI_TONES: {
   id: ToneId;
   label: string;
+  task: string;
   message: string;
+  screenshot: string;
+  screenshotAlt: string;
 }[] = [
   {
     id: "hard",
     label: "Hard",
-    message: "You said you'd finish this by 3pm. What happened?",
+    task: "Finish report",
+    message:
+      "You said you'd finish this by 3pm. It's 5pm now. Where the hell is it? Don't make excuses. Get it done.",
+    screenshot: "/screenshots/tone-hard.jpg",
+    screenshotAlt:
+      "Plany AI Hard tone notification for Finish report with direct accountability message",
   },
   {
     id: "normal",
     label: "Normal",
-    message: "Hey, did you get this done?",
+    task: "Investor Pitch Deck v3",
+    message:
+      "Investor Pitch Deck v3 was due today. Did you get it wrapped up, or is something blocking you?",
+    screenshot: "/screenshots/tone-normal.jpg",
+    screenshotAlt:
+      "Plany AI Normal tone notification for Investor Pitch Deck v3 with a friendly check-in",
   },
   {
     id: "motivated",
     label: "Motivated",
-    message: "You're 80% there. Finish strong!",
+    task: "Launch Landing Page",
+    message:
+      "You're 80% there. The launch landing page is almost ready. One final push and it's live. Ready to finish it?",
+    screenshot: "/screenshots/tone-motivated.jpg",
+    screenshotAlt:
+      "Plany AI Motivated tone notification for Launch Landing Page with encouraging message",
   },
   {
     id: "professional",
     label: "Professional",
-    message: "Status update: did you finish 'Finish report'?",
+    task: "Submit YC Application Update",
+    message:
+      "You set this deadline yourself. It's overdue now. What happened? Progress or excuses?",
+    screenshot: "/screenshots/tone-professional.jpg",
+    screenshotAlt:
+      "Plany AI Professional tone notification for Submit YC Application Update",
   },
 ];
 export const FAQ_ITEMS = [

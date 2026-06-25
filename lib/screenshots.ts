@@ -3,6 +3,10 @@ export const SCREENSHOTS = {
   timelineLive: "/screenshots/timeline-live.png",
   taskDetail: "/screenshots/task-detail.png",
   focusMode: "/screenshots/focus-mode.png",
+  toneHard: "/screenshots/tone-hard.jpg",
+  toneNormal: "/screenshots/tone-normal.jpg",
+  toneMotivated: "/screenshots/tone-motivated.jpg",
+  toneProfessional: "/screenshots/tone-professional.jpg",
 } as const;
 
 export const SHOWCASE_ITEMS = [
