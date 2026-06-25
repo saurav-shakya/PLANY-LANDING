@@ -20,8 +20,8 @@ export function ProductTimeline() {
             Your whole day, one scroll away
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-plany-secondary">
-            A vertical timeline that shows when things happen — not just what&apos;s
-            on your list.
+            A vertical timeline for when things happen, not just what&apos;s on
+            your list.
           </p>
         </motion.div>
 
@@ -47,15 +47,15 @@ export function ProductTimeline() {
                   <h3 className="text-2xl font-medium">Timeline-first planning</h3>
                   <p className="mt-3 text-base leading-relaxed text-plany-secondary">
                     Every task gets a time slot, duration, and color. Walk through
-                    your morning, knock out work blocks, and track subtasks — all
-                    on one vertical timeline.
+                    your morning, block out work, track subtasks. All on one
+                    timeline.
                   </p>
                 </div>
                 <ul className="space-y-4">
                   {[
                     {
                       label: "Color-coded blocks",
-                      detail: "Walk, work, errands — each task has its own visual identity.",
+                      detail: "Walk, work, errands. Each gets its own color.",
                     },
                     {
                       label: "Subtasks & notes",

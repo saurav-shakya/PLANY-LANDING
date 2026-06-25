@@ -5,8 +5,8 @@ import { PRICING_TIERS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
-  title: "Pricing — Plany",
-  description: "Simple pricing for planning your day. Free to start, Pro when you need more.",
+  title: "Pricing | Plany",
+  description: "Free to start. Pro when you want more.",
 };
 
 export default function PricingPage() {
@@ -18,11 +18,11 @@ export default function PricingPage() {
           <div className="text-center">
             <p className="text-overline text-plany-secondary">Pricing</p>
             <h1 className="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">
-              Simple plans, no surprises
+              Pricing
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-plany-secondary md:text-lg">
-              Pricing is still being finalized — these tiers are placeholders while we
-              shape the Pro experience.
+              We&apos;re still figuring this out. The tiers below are placeholders
+              until Pro launches.
             </p>
           </div>
 

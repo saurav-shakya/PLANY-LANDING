@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Privacy Policy — Plany",
+  title: "Privacy Policy | Plany",
 };
 
 export default function PrivacyPage() {
@@ -12,8 +12,8 @@ export default function PrivacyPage() {
       </Link>
       <h1 className="mt-6 text-3xl font-medium">Privacy Policy</h1>
       <p className="mt-4 text-plany-secondary leading-relaxed">
-        Plany respects your privacy. We collect only what&apos;s needed to run the
-        app — your tasks, reminders, and account info. We don&apos;t sell your data.
+        Plany respects your privacy. We only collect what we need to run the app:
+        your tasks, reminders, and account info. We don&apos;t sell your data.
         For full details, contact support@plany.space.
       </p>
     </div>

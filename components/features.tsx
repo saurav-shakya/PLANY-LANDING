@@ -34,11 +34,10 @@ export function Features() {
         >
           <p className="text-overline text-plany-secondary">Features</p>
           <h2 className="mt-3 text-3xl font-medium md:text-[2.125rem]">
-            Built for days that actually happen
+            Built for real days
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-plany-secondary">
-            Everything you need to plan, execute, and stay accountable — without
-            the clutter.
+            Plan it, do it, own it. No extra noise.
           </p>
         </motion.div>
 

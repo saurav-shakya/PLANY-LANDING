@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Support — Plany",
+  title: "Support | Plany",
 };
 
 export default function SupportPage() {

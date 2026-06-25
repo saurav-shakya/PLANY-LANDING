@@ -13,25 +13,25 @@ export const SOCIAL_LINKS = [
   {
     id: "x",
     label: "X / Twitter",
-    description: "Stay up to date on our latest releases",
+    description: "New releases and updates",
     href: "https://x.com/planydotspace",
   },
   {
     id: "linkedin",
     label: "LinkedIn",
-    description: "Follow our journey and team updates",
+    description: "What we're building",
     href: "https://www.linkedin.com/company/planydotspace/",
   },
   {
     id: "instagram",
     label: "Instagram",
-    description: "Behind the scenes and product moments",
+    description: "Build updates and day-to-day",
     href: "https://instagram.com/plany.space",
   },
   {
     id: "youtube",
     label: "YouTube",
-    description: "Tutorials, demos, and feature walkthroughs",
+    description: "Demos and how-tos",
     href: "https://youtube.com/@planyspace",
   },
 ] as const;
@@ -41,7 +41,7 @@ export const PRICING_TIERS = [
     name: "Free",
     price: "$0",
     period: "forever",
-    description: "Everything you need to plan your day.",
+    description: "Plan your day without paying a cent.",
     features: [
       "Visual day timeline",
       "Time-based reminders",
@@ -55,7 +55,7 @@ export const PRICING_TIERS = [
     name: "Pro",
     price: "$4.99",
     period: "/ month",
-    description: "For people who want deeper accountability.",
+    description: "More follow-ups, more insight.",
     features: [
       "All Free features",
       "Advanced AI tones",
@@ -97,7 +97,7 @@ export const PROBLEMS = [
   {
     title: "Reminders feel dumb",
     description:
-      "You get pinged at the wrong time — or not at all when you're actually near the place.",
+      "Wrong time, wrong place. Or nothing when you're finally there.",
   },
   {
     title: "No accountability",
@@ -111,13 +111,13 @@ export const FEATURES = [
     icon: "Clock" as const,
     title: "See your whole day at a glance",
     description:
-      "Tasks sit on a visual timeline — not buried in a list.",
+      "Tasks on a timeline, not lost in a list.",
   },
   {
     icon: "Bell" as const,
-    title: "Reminds you when it actually matters",
+    title: "Reminds you at the right time",
     description:
-      "Set time-based reminders that fit your schedule — not random pings.",
+      "Time reminders that match your day, not random pings.",
   },
   {
     icon: "MapPin" as const,
@@ -129,7 +129,7 @@ export const FEATURES = [
     icon: "Sparkles" as const,
     title: "Your week planned in 30 seconds",
     description:
-      "Tell Plany what you need — it builds the tasks for you.",
+      "Tell Plany what you need. It builds the list.",
   },
   {
     icon: "Settings2" as const,
@@ -160,7 +160,7 @@ export const AI_TONES: {
   {
     id: "normal",
     label: "Normal",
-    message: "Hey — did you get this done?",
+    message: "Hey, did you get this done?",
   },
   {
     id: "motivated",
@@ -170,14 +170,14 @@ export const AI_TONES: {
   {
     id: "professional",
     label: "Professional",
-    message: "Status update: Task 'Finish report' — completed?",
+    message: "Status update: did you finish 'Finish report'?",
   },
 ];
 export const FAQ_ITEMS = [
   {
     question: "Is Plany free?",
     answer:
-      "Yes — you can plan your day and use core features for free. Pro unlocks advanced AI tones and deeper insights.",
+      "Yes. Plan your day and use core features free. Pro adds AI tones and weekly insights.",
   },
   {
     question: "Does Plany work offline?",
@@ -187,18 +187,18 @@ export const FAQ_ITEMS = [
   {
     question: "How does location-based reminding work?",
     answer:
-      "Set a place on any task — Plany nudges you when you arrive nearby, like reminding you to buy groceries at the store.",
+      "Add a place to any task. Plany pings you when you're nearby, like at the grocery store.",
   },
   {
     question: "What are AI accountability check-ins?",
     answer:
-      "Plany follows up on tasks you committed to — asking if you finished and why not, in a tone you choose.",
+      "Plany checks back on tasks you said you'd do. You pick how direct it gets.",
   },
 ];
 
 export const SOCIAL_PROOF = {
   quote:
-    "Finally an app that shows my day as a timeline, not a endless list. The AI follow-ups actually keep me honest.",
+    "I can finally see my day laid out, not buried in a list. The follow-ups keep me honest.",
   author: "Early beta user",
   role: "Product designer",
 };

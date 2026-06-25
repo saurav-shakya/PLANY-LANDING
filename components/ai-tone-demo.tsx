@@ -23,10 +23,10 @@ export function AiToneDemo() {
         >
           <p className="text-overline text-plany-secondary">AI accountability</p>
           <h2 className="mt-3 text-3xl font-medium md:text-[2.125rem]">
-            An AI that talks like you want
+            Pick your follow-up style
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-plany-secondary">
-            Pick how Plany follows up — from gentle nudges to no-nonsense check-ins.
+            Choose how direct Plany gets when it checks in.
           </p>
         </motion.div>
 
@@ -76,7 +76,7 @@ export function AiToneDemo() {
                   Yes, done
                 </span>
                 <span className="radius-btn border border-plany-border px-3 py-1.5 text-xs text-plany-secondary">
-                  Not yet — here&apos;s why
+                  Not yet, here&apos;s why
                 </span>
               </div>
             </motion.div>

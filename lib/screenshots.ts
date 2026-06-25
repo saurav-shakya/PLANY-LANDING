@@ -11,7 +11,7 @@ export const SHOWCASE_ITEMS = [
     overline: "Visual planning",
     title: "See your whole day at a glance",
     description:
-      "Tasks sit on a vertical timeline with color-coded blocks, durations, and subtasks — not buried in a flat list.",
+      "Tasks on a vertical timeline with colors, durations, and subtasks. Not another flat list.",
     image: SCREENSHOTS.timeline,
     imageAlt: "Plany timeline showing Walk, Pan card apply, Checklist App setup, and completed tasks",
     align: "right" as const,
@@ -21,7 +21,7 @@ export const SHOWCASE_ITEMS = [
     overline: "Stay on track",
     title: "Focus mode with a live countdown",
     description:
-      "Enter a distraction-free session for any task. See time remaining, skip, or mark done — with location context when it matters.",
+      "Lock in on a task. See time left, skip it, or mark done. Location shows when it's relevant.",
     image: SCREENSHOTS.focusMode,
     imageAlt: "Plany focus mode with flip-clock timer and Delhi location tag",
     align: "left" as const,
@@ -31,7 +31,7 @@ export const SHOWCASE_ITEMS = [
     overline: "Deep task control",
     title: "Every task, fully detailed",
     description:
-      "Notes, checklists, and status actions in one sheet. Complete, skip, or let Plany AI follow up when you're done.",
+      "Notes, checklists, and actions in one place. Complete, skip, or let Plany check back later.",
     image: SCREENSHOTS.taskDetail,
     imageAlt: "Plany task detail with checklist progress and complete actions",
     align: "right" as const,
@@ -41,7 +41,7 @@ export const SHOWCASE_ITEMS = [
     overline: "Real-time progress",
     title: "Know exactly where you are in your day",
     description:
-      "A live now-indicator, remaining time on active tasks, and what's coming next — so you're never guessing.",
+      "Live indicator, time left on what's running, and what's up next. No guessing.",
     image: SCREENSHOTS.timelineLive,
     imageAlt: "Plany live timeline with filming task and Delhi location reminder",
     align: "left" as const,

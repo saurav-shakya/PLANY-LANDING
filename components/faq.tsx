@@ -22,7 +22,7 @@ export function Faq() {
         >
           <p className="text-overline text-plany-secondary">FAQ</p>
           <h2 className="mt-3 text-3xl font-medium md:text-[2.125rem]">
-            Questions, answered
+            Common questions
           </h2>
         </motion.div>
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Terms of Service — Plany",
+  title: "Terms of Service | Plany",
 };
 
 export default function TermsPage() {

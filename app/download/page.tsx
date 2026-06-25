@@ -3,7 +3,7 @@ import { Nav } from "@/components/nav";
 import { StoreBadges } from "@/components/store-badges";
 
 export const metadata = {
-  title: "Download — Plany",
+  title: "Download | Plany",
   description: "Get Plany on iOS and Android. Plan your day on a visual timeline.",
 };
 
@@ -18,13 +18,13 @@ export default function DownloadPage() {
             Start planning on a timeline
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-plany-secondary md:text-lg">
-            Free to start. No credit card. Available on iOS and Android.
+            Free to start. No card needed. iOS and Android.
           </p>
 
           <div className="mx-auto mt-10 max-w-xl glass-card p-8 md:p-12">
             <h2 className="text-xl font-medium">Get the app</h2>
             <p className="mt-3 text-sm text-plany-secondary">
-              Plan your first day in under a minute.
+              Takes about a minute to set up.
             </p>
             <div className="mt-8 flex justify-center">
               <StoreBadges />

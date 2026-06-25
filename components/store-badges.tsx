@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { PlanyMark } from "@/components/plany-logo";
 import { STORE_LINKS } from "@/lib/constants";
 
 export function StoreBadges({ className = "" }: { className?: string }) {
@@ -42,7 +42,7 @@ export function StoreBadges({ className = "" }: { className?: string }) {
 export function StoreBadgesCompact() {
   return (
     <div className="flex items-center gap-2 text-sm text-plany-secondary">
-      <Image src="/plany-icon.png" alt="Plany" width={20} height={20} className="rounded" />
+      <PlanyMark size={22} className="text-plany-primary" />
       <span>Available on iOS & Android</span>
     </div>
   );

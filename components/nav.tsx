@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { PlanyBrand } from "@/components/plany-logo";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { CommunityPanel } from "@/components/community-panel";
@@ -56,16 +56,8 @@ export function Nav() {
               : "border-plany-border/50 bg-plany-surface/40 backdrop-blur-md"
           )}
         >
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image
-              src="/plany-icon.png"
-              alt="Plany"
-              width={28}
-              height={28}
-              className="rounded-md"
-              priority
-            />
-            <span className="text-base font-semibold tracking-tight">PLANY</span>
+          <Link href="/" aria-label="Plany home" className="transition-opacity hover:opacity-90">
+            <PlanyBrand markSize={34} />
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">

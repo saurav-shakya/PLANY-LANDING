@@ -28,7 +28,7 @@ export function SocialProof() {
               &ldquo;{SOCIAL_PROOF.quote}&rdquo;
             </blockquote>
             <figcaption className="mt-5 text-sm text-plany-secondary">
-              — {SOCIAL_PROOF.author}, {SOCIAL_PROOF.role}
+              {SOCIAL_PROOF.author}, {SOCIAL_PROOF.role}
             </figcaption>
           </Card>
         </motion.div>

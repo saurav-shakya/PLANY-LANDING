@@ -4,9 +4,9 @@ import { getToneMessage } from "./tone";
 
 const EXPECTED: Record<ToneId, string> = {
   hard: "You said you'd finish this by 3pm. What happened?",
-  normal: "Hey — did you get this done?",
+  normal: "Hey, did you get this done?",
   motivated: "You're 80% there. Finish strong!",
-  professional: "Status update: Task 'Finish report' — completed?",
+  professional: "Status update: did you finish 'Finish report'?",
 };
 
 describe("getToneMessage", () => {

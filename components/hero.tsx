@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { AwsStartupsBadge } from "@/components/aws-startups-badge";
 import { Chip } from "@/components/ui/chip";
 import { StoreBadges } from "@/components/store-badges";
 import { HERO_CHIPS } from "@/lib/constants";
@@ -23,9 +24,17 @@ export function Hero() {
   return (
     <section className="hero-glow relative overflow-visible px-4 pb-16 pt-28 md:px-6 md:pb-24 md:pt-36">
       <div className="relative mx-auto max-w-5xl text-center">
-        <motion.p
+        <motion.div
           {...fadeUp}
           transition={{ duration: 0.5 }}
+          className="mb-8 flex justify-center"
+        >
+          <AwsStartupsBadge />
+        </motion.div>
+
+        <motion.p
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.04 }}
           className="text-overline mb-4 text-plany-secondary"
         >
           Timeline planning · Smart reminders · AI accountability
@@ -44,8 +53,8 @@ export function Hero() {
           transition={{ duration: 0.55, delay: 0.16 }}
           className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-plany-secondary md:text-lg"
         >
-          Plany turns tasks into a visual day plan — with reminders, location
-          nudges, and an AI that actually follows up.
+          Tasks on a timeline. Reminders that make sense. An AI that asks if
+          you did the thing.
         </motion.p>
 
         <motion.div

@@ -14,9 +14,9 @@ export function Cta() {
         className="mx-auto max-w-3xl glass-card px-6 py-14 text-center md:px-12 md:py-16"
       >
         <h2 className="text-3xl font-medium md:text-[2.125rem]">
-          Plan your first day in under a minute.
+          Try it on your next busy day.
         </h2>
-        <p className="mt-4 text-plany-secondary">Free to start. No credit card.</p>
+        <p className="mt-4 text-plany-secondary">Free to start. No card needed.</p>
         <div className="mt-8 flex justify-center">
           <Button href="/download" variant="primary" size="md">
             Download Plany

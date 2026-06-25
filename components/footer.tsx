@@ -1,6 +1,6 @@
 import { Instagram, Linkedin, Youtube } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import { PlanyBrand } from "@/components/plany-logo";
 import { SOCIAL_LINKS } from "@/lib/constants";
 
 const FOOTER_LINKS = [
@@ -47,14 +47,8 @@ export function Footer() {
         </div>
 
         <div className="flex w-full flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="flex items-center gap-2.5">
-            <Image
-              src="/plany-icon.png"
-              alt="Plany"
-              width={24}
-              height={24}
-              className="rounded"
-            />
+          <div className="flex flex-col items-center gap-2 sm:items-start">
+            <PlanyBrand markSize={28} textClassName="text-sm" />
             <span className="text-sm text-plany-secondary">
               Made by Saurav in India
             </span>
