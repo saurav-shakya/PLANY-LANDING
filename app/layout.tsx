@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://plany.space",
     siteName: "Plany",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/screenshots/app-preview.png", width: 1024, height: 1024 }],
   },
   twitter: {
     card: "summary_large_image",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description:
       "Plan your day visually. Smart reminders, location nudges, and AI accountability.",
     creator: "@sauravv_x",
-    images: ["/og-image.png"],
+    images: ["/screenshots/app-preview.png"],
   },
   icons: {
     icon: "/plany-icon.png",

@@ -1,34 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, MapPin } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { TIMELINE_TASKS } from "@/lib/constants";
-
-function timeToMinutes(time: string) {
-  const [h, m] = time.split(":").map(Number);
-  return h * 60 + m;
-}
+import { ScreenshotPanel } from "@/components/phone-frame";
+import { SCREENSHOTS } from "@/lib/screenshots";
 
 export function ProductTimeline() {
-  const dayStart = 7 * 60;
-  const dayEnd = 22 * 60;
-  const nowMinutes = 12 * 60 + 30;
-
   return (
-    <section id="product" className="px-4 py-16 md:px-6 md:py-24">
+    <section id="product" className="section-gap px-4 md:px-6">
       <div className="mx-auto max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="mb-10 text-center md:mb-14"
+          className="mb-12 text-center md:mb-16"
         >
-          <p className="text-xs font-medium uppercase tracking-[0.08em] text-plany-secondary">
-            The product
-          </p>
-          <h2 className="mt-3 text-3xl font-medium md:text-4xl">
+          <p className="text-overline text-plany-secondary">The product</p>
+          <h2 className="mt-3 text-3xl font-medium md:text-[2.125rem]">
             Your whole day, one scroll away
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-plany-secondary">
@@ -38,93 +26,60 @@ export function ProductTimeline() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55 }}
+          className="relative"
         >
-          <Card className="overflow-hidden border-plany-border p-0">
-            <div className="grid md:grid-cols-[1fr_1.2fr]">
-              <div className="border-b border-plany-border p-6 md:border-b-0 md:border-r md:p-8">
-                <h3 className="text-xl font-medium">Timeline-first planning</h3>
-                <p className="mt-3 text-sm leading-relaxed text-plany-secondary">
-                  Drag tasks through your day. See gaps, overlaps, and what&apos;s
-                  coming next — like Structured, but built for how you actually live.
-                </p>
-                <ul className="mt-6 space-y-3">
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04),transparent_65%)]" />
+          <div className="overflow-hidden rounded-2xl border border-plany-border bg-plany-surface/50 p-4 md:p-8">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+              <div className="order-2 lg:order-1">
+                <ScreenshotPanel
+                  src={SCREENSHOTS.timelineLive}
+                  alt="Plany live timeline with active tasks and remaining time"
+                  className="mx-auto max-w-[300px] lg:max-w-none"
+                />
+              </div>
+              <div className="order-1 space-y-6 lg:order-2">
+                <div>
+                  <h3 className="text-2xl font-medium">Timeline-first planning</h3>
+                  <p className="mt-3 text-base leading-relaxed text-plany-secondary">
+                    Every task gets a time slot, duration, and color. Walk through
+                    your morning, knock out work blocks, and track subtasks — all
+                    on one vertical timeline.
+                  </p>
+                </div>
+                <ul className="space-y-4">
                   {[
-                    "Color-coded tasks by type",
-                    "Live 'now' indicator",
-                    "Location pins on errands",
+                    {
+                      label: "Color-coded blocks",
+                      detail: "Walk, work, errands — each task has its own visual identity.",
+                    },
+                    {
+                      label: "Subtasks & notes",
+                      detail: "Break big tasks into checklists without losing the timeline view.",
+                    },
+                    {
+                      label: "Tap to expand",
+                      detail: "Open any task for details, edit, complete, or skip.",
+                    },
                   ].map((item) => (
                     <li
-                      key={item}
-                      className="flex items-center gap-2 text-sm text-plany-secondary"
+                      key={item.label}
+                      className="border-l-2 border-plany-border-strong pl-4"
                     >
-                      <CheckCircle2 className="h-4 w-4 shrink-0 text-plany-accent" />
-                      {item}
+                      <p className="font-medium">{item.label}</p>
+                      <p className="mt-1 text-sm text-plany-secondary">
+                        {item.detail}
+                      </p>
                     </li>
                   ))}
                 </ul>
               </div>
-
-              <div className="relative bg-[#0a0b0d] p-6 md:p-8">
-                <div className="relative min-h-[360px]">
-                  <div className="absolute bottom-0 left-6 top-0 w-px bg-plany-border" />
-
-                  <div
-                    className="absolute left-4 right-0 z-10 flex items-center gap-2"
-                    style={{
-                      top: `${((nowMinutes - dayStart) / (dayEnd - dayStart)) * 100}%`,
-                    }}
-                  >
-                    <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
-                    <div className="h-px flex-1 bg-red-500/50" />
-                  </div>
-
-                  {TIMELINE_TASKS.map((task, i) => {
-                    const start = timeToMinutes(task.start);
-                    const end = timeToMinutes(task.end);
-                    const top = ((start - dayStart) / (dayEnd - dayStart)) * 100;
-                    const height = Math.max(
-                      ((end - start) / (dayEnd - dayStart)) * 100,
-                      8
-                    );
-
-                    return (
-                      <motion.div
-                        key={task.title}
-                        initial={{ opacity: 0, x: 12 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.08, duration: 0.4 }}
-                        className="absolute left-10 right-2 rounded-lg border border-white/5 px-3 py-2"
-                        style={{
-                          top: `${top}%`,
-                          height: `${height}%`,
-                          backgroundColor: `${task.color}18`,
-                          borderLeftColor: task.color,
-                          borderLeftWidth: 3,
-                        }}
-                      >
-                        <div className="flex items-start justify-between gap-2">
-                          <div>
-                            <p className="text-sm font-medium">{task.title}</p>
-                            <p className="text-xs text-plany-secondary">
-                              {task.start} – {task.end}
-                            </p>
-                          </div>
-                          {task.title === "Buy groceries" && (
-                            <MapPin className="h-3.5 w-3.5 shrink-0 text-amber-400" />
-                          )}
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </div>
             </div>
-          </Card>
+          </div>
         </motion.div>
       </div>
     </section>

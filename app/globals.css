@@ -6,7 +6,7 @@
   --plany-primary: #ffffff;
   --plany-secondary: #9c9c9d;
   --plany-tertiary: #e6e6e6;
-  --plany-border: rgba(255, 255, 255, 0.06);
+  --plany-border: #ffffff0f;
   --plany-border-strong: #2f3031;
   --plany-accent: #16a34a;
   --plany-error: #ff6b6b;
@@ -23,6 +23,8 @@
   --spacing-md: 24px;
   --spacing-lg: 48px;
   --spacing-xl: 120px;
+  --section-gap-mobile: 72px;
+  --section-gap-desktop: 96px;
 
   --background: var(--plany-neutral);
   --foreground: var(--plany-primary);
@@ -86,4 +88,75 @@ body {
 
 .animate-pulse-soft {
   animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.section-gap {
+  padding-top: var(--section-gap-mobile);
+  padding-bottom: var(--section-gap-mobile);
+}
+
+@media (min-width: 768px) {
+  .section-gap {
+    padding-top: var(--section-gap-desktop);
+    padding-bottom: var(--section-gap-desktop);
+  }
+}
+
+.radius-btn {
+  border-radius: var(--radius-md);
+}
+
+.radius-card {
+  border-radius: var(--radius-lg);
+}
+
+.text-overline {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-grid {
+  position: relative;
+  isolation: isolate;
+}
+
+.page-grid::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--plany-neutral);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.hero-glow {
+  position: relative;
+}
+
+.hero-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(255, 255, 255, 0.07), transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 20%, rgba(233, 150, 149, 0.08), transparent 50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-delayed,
+  .animate-pulse-soft {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }

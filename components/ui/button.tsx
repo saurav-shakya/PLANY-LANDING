@@ -16,11 +16,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
           "disabled:pointer-events-none disabled:opacity-50",
           variant === "primary" &&
-            "bg-plany-tertiary text-plany-border-strong hover:bg-white rounded-md",
+            "radius-btn bg-plany-tertiary text-plany-border-strong hover:bg-white",
           variant === "ghost" &&
-            "border border-plany-border bg-plany-surface/80 text-plany-primary hover:border-white/20 rounded-md backdrop-blur-md",
+            "radius-btn border border-plany-border bg-plany-surface/80 text-plany-primary backdrop-blur-md hover:border-white/20",
           variant === "link" &&
-            "bg-transparent text-plany-secondary hover:text-plany-primary p-0 h-auto",
+            "h-auto bg-transparent p-0 text-plany-secondary hover:text-plany-primary",
           size === "sm" && "h-8 px-3 text-sm",
           size === "md" && "h-9 px-4 text-sm",
           className

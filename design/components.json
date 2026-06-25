@@ -1,0 +1,31 @@
+{
+  "file": "Plany Landing v2",
+  "pages": ["Cover", "Foundations", "Components", "Desktop", "Mobile"],
+  "variables": {
+    "colors": {
+      "neutral": "#07080A",
+      "surface": "#0D0E10",
+      "primary": "#FFFFFF",
+      "secondary": "#9C9C9D",
+      "tertiary": "#E6E6E6",
+      "border": "#FFFFFF0F",
+      "accent": "#16a34a"
+    },
+    "radius": { "button": "8px", "card": "12px", "nav": "12px", "chip": "9999px" },
+    "spacing": { "sectionDesktop": "120px", "sectionMobile": "60px" }
+  },
+  "components": {
+    "Button/Primary": { "fill": "tertiary", "text": "border-strong", "radius": "8px", "height": "36px" },
+    "Button/Ghost": { "fill": "transparent", "border": "border", "radius": "8px" },
+    "Nav/Pill": { "height": "56px", "maxWidth": "1024px", "backdrop": true, "radius": "12px" },
+    "Card/Surface": { "fill": "surface", "border": "1px border", "radius": "12px", "padding": "24px" },
+    "Chip/Task": { "radius": "full", "border": "border", "padding": "6px 12px" },
+    "Feature/Row": { "layout": "icon + title + description", "gap": "16px" },
+    "StoreBadge": { "variants": ["App Store", "Google Play"], "height": "48px" },
+    "AI/ToneSelector": { "tones": ["Hard", "Normal", "Motivated", "Professional"], "bubble": true }
+  },
+  "frames": {
+    "Desktop": { "width": 1440, "sections": ["Nav", "Hero", "Problem", "Product", "Features", "AIToneDemo", "SocialProof", "CTA", "Footer"] },
+    "Mobile": { "width": 390, "sections": ["Nav", "Hero", "Problem", "Product", "Features", "AIToneDemo", "SocialProof", "CTA", "Footer"] }
+  }
+}

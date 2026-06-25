@@ -9,7 +9,7 @@ export function StoreBadges({ className = "" }: { className?: string }) {
         href={STORE_LINKS.appStore}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex h-12 items-center gap-2 rounded-lg border border-plany-border bg-plany-surface px-4 transition-colors hover:border-white/20 hover:bg-white/5"
+        className="inline-flex h-12 items-center gap-2 radius-btn border border-plany-border bg-plany-surface px-4 transition-colors hover:border-white/20 hover:bg-white/5"
         aria-label="Download on the App Store"
       >
         <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden>
@@ -24,7 +24,7 @@ export function StoreBadges({ className = "" }: { className?: string }) {
         href={STORE_LINKS.playStore}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex h-12 items-center gap-2 rounded-lg border border-plany-border bg-plany-surface px-4 transition-colors hover:border-white/20 hover:bg-white/5"
+        className="inline-flex h-12 items-center gap-2 radius-btn border border-plany-border bg-plany-surface px-4 transition-colors hover:border-white/20 hover:bg-white/5"
         aria-label="Get it on Google Play"
       >
         <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden>
@@ -42,7 +42,7 @@ export function StoreBadges({ className = "" }: { className?: string }) {
 export function StoreBadgesCompact() {
   return (
     <div className="flex items-center gap-2 text-sm text-plany-secondary">
-      <Image src="/plany-icon.png" alt="" width={20} height={20} className="rounded" />
+      <Image src="/plany-icon.png" alt="Plany" width={20} height={20} className="rounded" />
       <span>Available on iOS & Android</span>
     </div>
   );

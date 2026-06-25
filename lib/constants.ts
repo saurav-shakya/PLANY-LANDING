@@ -10,10 +10,10 @@ export const NAV_LINKS = [
 ];
 
 export const HERO_CHIPS = [
-  "Gym at 7am",
-  "Buy groceries near store",
-  "Call mom",
-  "Finish report",
+  "Walk · 19 min",
+  "Pan card apply",
+  "2/2 Subtasks done",
+  "Timeline bugs fix",
 ];
 
 export const PROBLEMS = [
@@ -45,13 +45,25 @@ export const FEATURES = [
     icon: "Bell" as const,
     title: "Reminds you when it actually matters",
     description:
-      "Time-based and location-based nudges you control.",
+      "Set time-based reminders that fit your schedule — not random pings.",
+  },
+  {
+    icon: "MapPin" as const,
+    title: "Reminds you when you're near the place",
+    description:
+      "Buy groceries when you're at the store. Call mom when you're home.",
   },
   {
     icon: "Sparkles" as const,
     title: "Your week planned in 30 seconds",
     description:
       "Tell Plany what you need — it builds the tasks for you.",
+  },
+  {
+    icon: "Settings2" as const,
+    title: "Notifications that fit how you work",
+    description:
+      "Customize how and when Plany nudges you for each task.",
   },
   {
     icon: "MessageCircle" as const,
@@ -89,16 +101,6 @@ export const AI_TONES: {
     message: "Status update: Task 'Finish report' — completed?",
   },
 ];
-
-export const TIMELINE_TASKS = [
-  { start: "07:00", end: "07:45", title: "Gym", color: "#16a34a" },
-  { start: "08:30", end: "09:00", title: "Have a coffee", color: "#2563eb" },
-  { start: "09:30", end: "11:00", title: "Finish report", color: "#7c3aed" },
-  { start: "12:30", end: "13:15", title: "Buy groceries", color: "#f59e0b" },
-  { start: "17:00", end: "17:30", title: "Call mom", color: "#db2777" },
-  { start: "20:00", end: "21:00", title: "Read 20 mins", color: "#0ea5e9" },
-];
-
 export const FAQ_ITEMS = [
   {
     question: "Is Plany free?",

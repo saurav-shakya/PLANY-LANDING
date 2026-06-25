@@ -21,10 +21,10 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6">
       <nav
         className={cn(
-          "mx-auto flex h-14 max-w-5xl items-center justify-between rounded-xl border px-4 transition-all duration-300 md:px-6",
+          "mx-auto flex h-14 max-w-5xl items-center justify-between radius-card border px-4 transition-all duration-300 md:px-6",
           scrolled
-            ? "border-plany-border bg-plany-surface/90 shadow-lg shadow-black/20 backdrop-blur-xl"
-            : "border-transparent bg-transparent"
+            ? "border-plany-border bg-plany-surface/90 shadow-lg shadow-black/30 backdrop-blur-xl"
+            : "border-plany-border/50 bg-plany-surface/40 backdrop-blur-md"
         )}
       >
         <Link href="/" className="flex items-center gap-2.5">
