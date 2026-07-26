@@ -7,18 +7,18 @@ export function AwsStartupsBadge() {
       href="https://aws.amazon.com/startups/"
       target="_blank"
       rel="noopener noreferrer"
-      className="glass-card group inline-flex flex-col items-center gap-3 px-6 py-4 transition-all hover:border-white/20 hover:bg-white/[0.07] sm:flex-row sm:gap-4 sm:px-8 sm:py-5"
-      aria-label="backed by AWS Startups"
+      className="glass-card group inline-flex items-center gap-2 px-3 py-1.5 transition-all hover:border-white/20 hover:bg-white/[0.07] sm:gap-2.5 sm:px-3.5 sm:py-2"
+      aria-label="Backed by AWS Startups"
     >
-      <span className="text-base font-medium text-plany-primary sm:text-lg">
-         Backed by
+      <span className="text-xs font-medium text-plany-secondary sm:text-[13px]">
+        Backed by
       </span>
       <Image
         src="/aws-startups-cropped.png"
         alt="AWS Startups"
         width={450}
         height={111}
-        className="h-10 w-auto object-contain sm:h-12 md:h-14"
+        className="h-5 w-auto object-contain sm:h-6"
         priority
       />
     </Link>

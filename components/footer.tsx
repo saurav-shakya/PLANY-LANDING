@@ -1,12 +1,59 @@
 import { Instagram, Linkedin, Youtube } from "lucide-react";
 import Link from "next/link";
-import { PlanyBrand } from "@/components/plany-logo";
-import { SOCIAL_LINKS } from "@/lib/constants";
+import { SOCIAL_LINKS, STORE_LINKS } from "@/lib/constants";
 
-const FOOTER_LINKS = [
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-  { label: "Support", href: "/support" },
+type FooterLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+type FooterColumn = {
+  title: string;
+  links: FooterLink[];
+};
+
+const FOOTER_COLUMNS: FooterColumn[] = [
+  {
+    title: "Product",
+    links: [
+      { label: "Features", href: "/#features" },
+      { label: "Timeline", href: "/#product" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "FAQ", href: "/#faq" },
+    ],
+  },
+  {
+    title: "Community",
+    links: [
+      { label: "X / Twitter", href: "https://x.com/planydotspace", external: true },
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/planydotspace/", external: true },
+      { label: "Instagram", href: "https://instagram.com/plany.space", external: true },
+      { label: "YouTube", href: "https://youtube.com/@planyspace", external: true },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { label: "Help Center", href: "/support" },
+      { label: "Contact Support", href: "mailto:support@plany.space", external: true },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About us", href: "/about" },
+      { label: "Terms", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+    ],
+  },
+  {
+    title: "Download",
+    links: [
+      { label: "Get the app", href: "/download" },
+      { label: "Plany for Android", href: STORE_LINKS.playStore, external: true },
+    ],
+  },
 ];
 
 function XIcon({ className }: { className?: string }) {
@@ -24,47 +71,77 @@ const socialIcons = {
   youtube: Youtube,
 } as const;
 
+function FooterNavLink({ link }: { link: FooterLink }) {
+  const className =
+    "text-sm text-plany-secondary transition-colors hover:text-plany-primary";
+
+  if (link.external) {
+    return (
+      <a
+        href={link.href}
+        className={className}
+        {...(link.href.startsWith("http")
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
+      >
+        {link.label}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={link.href} className={className}>
+      {link.label}
+    </Link>
+  );
+}
+
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-plany-border px-4 py-12 md:px-6">
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-8">
-        <div className="flex items-center gap-3">
-          {SOCIAL_LINKS.map((link) => {
-            const Icon = socialIcons[link.id];
-            return (
-              <Link
-                key={link.id}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={link.label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-plany-border bg-plany-surface/60 text-plany-secondary transition-all hover:border-white/20 hover:bg-white/5 hover:text-plany-primary"
-              >
-                <Icon className="h-4 w-4" />
-              </Link>
-            );
-          })}
-        </div>
+    <footer className="mt-auto border-t border-plany-border bg-plany-neutral px-4 pt-14 pb-10 md:px-6 md:pt-16">
+      <div className="mx-auto max-w-5xl">
+        <nav
+          aria-label="Footer"
+          className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-8"
+        >
+          {FOOTER_COLUMNS.map((column) => (
+            <div key={column.title}>
+              <p className="text-overline text-plany-primary">{column.title}</p>
+              <ul className="mt-4 space-y-3">
+                {column.links.map((link) => (
+                  <li key={`${column.title}-${link.label}`}>
+                    <FooterNavLink link={link} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
 
-        <div className="flex w-full flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="flex flex-col items-center gap-2 sm:items-start">
-            <PlanyBrand markSize={28} textClassName="text-sm" />
-            <span className="text-sm text-plany-secondary">
-              Made by Saurav in India
-            </span>
+        <div className="mt-14 border-t border-plany-border pt-8">
+          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+            <p className="text-sm text-plany-secondary">
+              © {new Date().getFullYear()} Plany Space. All rights reserved.
+            </p>
+
+            <div className="flex items-center gap-2">
+              {SOCIAL_LINKS.map((link) => {
+                const Icon = socialIcons[link.id];
+                return (
+                  <Link
+                    key={link.id}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.label}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-plany-border bg-plany-surface/40 text-plany-secondary transition-all hover:border-white/20 hover:bg-white/5 hover:text-plany-primary"
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                  </Link>
+                );
+              })}
+            </div>
           </div>
-
-          <nav className="flex flex-wrap items-center justify-center gap-6">
-            {FOOTER_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-plany-secondary transition-colors hover:text-plany-primary"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
         </div>
       </div>
     </footer>

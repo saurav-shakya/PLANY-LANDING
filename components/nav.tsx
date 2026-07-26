@@ -93,7 +93,7 @@ export function Nav() {
 
           <div className="flex items-center gap-3">
             <Button href="/download" variant="primary" size="sm" className="hidden sm:inline-flex">
-              Start with PLANY
+              Download Now
             </Button>
             <button
               type="button"
