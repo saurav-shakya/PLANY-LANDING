@@ -1,6 +1,5 @@
 export const STORE_LINKS = {
-  appStore: "https://apps.apple.com/app/plany",
-  playStore: "https://play.google.com/store/apps/details?id=com.plany.app",
+  playStore: "https://plany.space/blog/how-to-join-plany-timeline-beta",
 };
 
 export const NAV_LINKS = [

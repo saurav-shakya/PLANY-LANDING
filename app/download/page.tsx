@@ -18,7 +18,7 @@ export default function DownloadPage() {
             Start planning on a timeline
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-plany-secondary md:text-lg">
-            Free to start. No card needed. iOS and Android.
+            Free to start. No card needed. Available on Google Play.
           </p>
 
           <div className="mx-auto mt-10 max-w-xl glass-card p-8 md:p-12">

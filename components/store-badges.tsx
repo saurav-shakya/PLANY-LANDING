@@ -2,37 +2,59 @@ import Link from "next/link";
 import { PlanyMark } from "@/components/plany-logo";
 import { STORE_LINKS } from "@/lib/constants";
 
+/** Multi-color Google Play triangle (brand colors) */
+function GooglePlayIcon({ className = "h-7 w-7" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 512 512"
+      className={className}
+      aria-hidden
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Blue — left face */}
+      <path
+        fill="#4285F4"
+        d="M47.6 41.4C43.9 45.9 41.7 51.9 41.7 59.1v393.8c0 7.2 2.2 13.2 5.9 17.7l256.2-214.7L47.6 41.4z"
+      />
+      {/* Green — top-right */}
+      <path
+        fill="#34A853"
+        d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1z"
+      />
+      {/* Yellow — right tip */}
+      <path
+        fill="#FBBC04"
+        d="M464.5 228.4 385 182.5l-59.7 51.8L385 286.1l79.5-45.7c11.4-6.6 11.4-23.1 0-29.7z"
+      />
+      {/* Red — bottom-right */}
+      <path
+        fill="#EA4335"
+        d="M104.6 499l220.7-221.3 60.1 60.1L104.6 499z"
+      />
+    </svg>
+  );
+}
+
 export function StoreBadges({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
-      <Link
-        href={STORE_LINKS.appStore}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex h-12 items-center gap-2 radius-btn border border-plany-border bg-plany-surface px-4 transition-colors hover:border-white/20 hover:bg-white/5"
-        aria-label="Download on the App Store"
-      >
-        <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden>
-          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-        </svg>
-        <div className="text-left leading-tight">
-          <div className="text-[10px] text-plany-secondary">Download on the</div>
-          <div className="text-sm font-medium">App Store</div>
-        </div>
-      </Link>
+    <div
+      className={`flex flex-wrap items-center justify-center gap-3 ${className}`}
+    >
       <Link
         href={STORE_LINKS.playStore}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex h-12 items-center gap-2 radius-btn border border-plany-border bg-plany-surface px-4 transition-colors hover:border-white/20 hover:bg-white/5"
+        className="group inline-flex h-14 items-center gap-3.5 rounded-xl border border-white/15 bg-black px-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all hover:border-white/30 hover:bg-zinc-950 hover:shadow-[0_10px_40px_rgba(0,0,0,0.4)] active:scale-[0.98]"
         aria-label="Get it on Google Play"
       >
-        <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden>
-          <path d="M3.609 1.814L13.792 12 3.61 22.186a1.003 1.003 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.303 2.303-8.633-8.635z" />
-        </svg>
-        <div className="text-left leading-tight">
-          <div className="text-[10px] text-plany-secondary">Get it on</div>
-          <div className="text-sm font-medium">Google Play</div>
+        <GooglePlayIcon className="h-8 w-8 shrink-0 transition-transform duration-200 group-hover:scale-105" />
+        <div className="text-left leading-none">
+          <div className="text-[10px] font-medium uppercase tracking-[0.06em] text-white/70">
+            Get it on
+          </div>
+          <div className="mt-1 text-[17px] font-semibold tracking-tight text-white">
+            Google Play
+          </div>
         </div>
       </Link>
     </div>
@@ -43,7 +65,7 @@ export function StoreBadgesCompact() {
   return (
     <div className="flex items-center gap-2 text-sm text-plany-secondary">
       <PlanyMark size={22} className="text-plany-primary" />
-      <span>Available on iOS & Android</span>
+      <span>Available on Google Play</span>
     </div>
   );
 }

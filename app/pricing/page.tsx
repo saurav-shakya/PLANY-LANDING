@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer";
 import { Nav } from "@/components/nav";
+import { StoreBadges } from "@/components/store-badges";
 import { Button } from "@/components/ui/button";
 import { PRICING_TIERS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -69,6 +70,13 @@ export default function PricingPage() {
                 </Button>
               </div>
             ))}
+          </div>
+
+          <div className="mt-16 flex flex-col items-center gap-4 text-center">
+            <p className="text-sm text-plany-secondary">
+              Free to start. Get Plany on Android.
+            </p>
+            <StoreBadges />
           </div>
         </div>
       </main>

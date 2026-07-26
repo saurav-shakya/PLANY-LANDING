@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { StoreBadges } from "@/components/store-badges";
 
 export function Cta() {
   return (
@@ -18,9 +18,7 @@ export function Cta() {
         </h2>
         <p className="mt-4 text-plany-secondary">Free to start. No card needed.</p>
         <div className="mt-8 flex justify-center">
-          <Button href="/download" variant="primary" size="md">
-            Download Plany
-          </Button>
+          <StoreBadges />
         </div>
       </motion.div>
     </section>
