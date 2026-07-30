@@ -1,7 +1,8 @@
 import { howToDeleteAccountPost } from "./content/how-to-delete-your-plany-timeline-account";
+import { howToJoinBetaPost } from "./content/how-to-join-plany-timeline-beta";
 import type { BlogPost } from "./types";
 
-const POSTS: BlogPost[] = [howToDeleteAccountPost];
+const POSTS: BlogPost[] = [howToJoinBetaPost, howToDeleteAccountPost];
 
 export function getAllPosts(): BlogPost[] {
   return [...POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));

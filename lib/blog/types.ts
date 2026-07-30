@@ -5,6 +5,14 @@ export type BlogBlock =
   | { type: "ul"; items: string[] }
   | { type: "note"; text: string }
   | {
+      type: "image";
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+      caption?: string;
+    }
+  | {
       type: "table";
       headers: [string, string];
       rows: [string, string][];

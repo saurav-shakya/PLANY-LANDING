@@ -1,9 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { BlogBlock } from "@/lib/blog/types";
 
 function InlineText({ text }: { text: string }) {
-  // Support simple **bold** markers in list/paragraph copy
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  // Support simple **bold** and [label](href) markers in list/paragraph copy
+  const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
   return (
     <>
       {parts.map((part, i) => {
@@ -12,6 +13,31 @@ function InlineText({ text }: { text: string }) {
             <strong key={i} className="font-medium text-plany-primary">
               {part.slice(2, -2)}
             </strong>
+          );
+        }
+        const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (linkMatch) {
+          const [, label, href] = linkMatch;
+          const className =
+            "font-medium text-plany-primary underline decoration-white/20 underline-offset-4 transition-colors hover:decoration-white/50";
+          if (href.startsWith("http") || href.startsWith("mailto:")) {
+            return (
+              <a
+                key={i}
+                href={href}
+                className={className}
+                {...(href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                {label}
+              </a>
+            );
+          }
+          return (
+            <Link key={i} href={href} className={className}>
+              {label}
+            </Link>
           );
         }
         return <span key={i}>{part}</span>;
@@ -78,6 +104,25 @@ export function BlogBlocks({ blocks }: { blocks: BlogBlock[] }) {
                 <span className="font-medium text-plany-primary">Note: </span>
                 <InlineText text={block.text} />
               </aside>
+            );
+          case "image":
+            return (
+              <figure key={index}>
+                <div className="overflow-hidden rounded-xl border border-plany-border bg-plany-surface/60">
+                  <Image
+                    src={block.src}
+                    alt={block.alt}
+                    width={block.width}
+                    height={block.height}
+                    className="h-auto w-full"
+                  />
+                </div>
+                {block.caption ? (
+                  <figcaption className="mt-2 text-sm text-plany-secondary/80">
+                    {block.caption}
+                  </figcaption>
+                ) : null}
+              </figure>
             );
           case "table":
             return (
