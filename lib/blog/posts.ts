@@ -16,6 +16,19 @@ export function getPostSlugs(): string[] {
   return POSTS.map((post) => post.slug);
 }
 
+export function getAdjacentPosts(slug: string): {
+  prev?: BlogPost;
+  next?: BlogPost;
+} {
+  const sorted = getAllPosts();
+  const index = sorted.findIndex((post) => post.slug === slug);
+  if (index === -1) return {};
+  return {
+    prev: index > 0 ? sorted[index - 1] : undefined,
+    next: index < sorted.length - 1 ? sorted[index + 1] : undefined,
+  };
+}
+
 export function formatPostDate(isoDate: string): string {
   const date = new Date(`${isoDate}T12:00:00Z`);
   return date.toLocaleDateString("en-US", {

@@ -33,5 +33,6 @@ export type BlogPost = {
   category: string;
   date: string; // ISO date YYYY-MM-DD
   lede: string;
+  ogImage?: { url: string; width: number; height: number };
   blocks: BlogBlock[];
 };

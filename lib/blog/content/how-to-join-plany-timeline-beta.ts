@@ -7,6 +7,11 @@ export const howToJoinBetaPost: BlogPost = {
     "Step-by-step visual guide to joining the Plany Timeline beta: join the Google Group, become a tester on Google Play, and download the app to unlock AI timelines and daily tasks.",
   category: "Guides & Updates",
   date: "2026-07-30",
+  ogImage: {
+    url: "/blog/join-beta/step-3-download-play-store.png",
+    width: 998,
+    height: 457,
+  },
   lede:
     "Plany Timeline is our biggest leap forward in AI-powered productivity, and it is rolling out through Google Play's official testing program. Here is the 3-step guide to becoming a beta tester and unlocking the new AI features today.",
   blocks: [

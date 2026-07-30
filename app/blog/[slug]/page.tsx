@@ -19,6 +19,11 @@ export async function generateMetadata({
   if (!post) {
     return { title: "Article not found | Plany" };
   }
+  const ogImage = post.ogImage ?? {
+    url: "/screenshots/timeline.png",
+    width: 459,
+    height: 1024,
+  };
   return {
     title: `${post.title} | Plany`,
     description: post.description,
@@ -27,6 +32,7 @@ export async function generateMetadata({
       description: post.description,
       type: "article",
       url: `/blog/${post.slug}`,
+      images: [ogImage],
     },
   };
 }
@@ -36,5 +42,33 @@ export default async function BlogPostPage({ params }: PageProps) {
   const post = getPost(slug);
   if (!post) notFound();
 
-  return <BlogPostLayout post={post} />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Organization",
+      name: "Plany",
+      url: "https://plany.space",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Plany",
+      url: "https://plany.space",
+    },
+    mainEntityOfPage: `https://plany.space/blog/${post.slug}`,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BlogPostLayout post={post} />
+    </>
+  );
 }

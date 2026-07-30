@@ -19,7 +19,7 @@ function InlineText({ text }: { text: string }) {
         if (linkMatch) {
           const [, label, href] = linkMatch;
           const className =
-            "font-medium text-plany-primary underline decoration-white/20 underline-offset-4 transition-colors hover:decoration-white/50";
+            "font-medium text-plany-primary underline decoration-plany-secondary/40 underline-offset-4 transition-colors hover:decoration-plany-secondary";
           if (href.startsWith("http") || href.startsWith("mailto:")) {
             return (
               <a
@@ -181,7 +181,7 @@ export function BlogBlocks({ blocks }: { blocks: BlogBlock[] }) {
               <ul key={index} className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
                 {block.items.map((item) => {
                   const className =
-                    "text-sm font-medium text-plany-primary underline decoration-white/20 underline-offset-4 transition-colors hover:decoration-white/50";
+                    "text-sm font-medium text-plany-primary underline decoration-plany-secondary/40 underline-offset-4 transition-colors hover:decoration-plany-secondary";
                   if (item.external || item.href.startsWith("mailto:")) {
                     return (
                       <li key={item.href}>
