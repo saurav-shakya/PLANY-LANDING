@@ -35,7 +35,31 @@ function GooglePlayIcon({ className = "h-7 w-7" }: { className?: string }) {
   );
 }
 
-export function StoreBadges({ className = "" }: { className?: string }) {
+export function StoreBadges({
+  className = "",
+  layout = "badge",
+}: {
+  className?: string;
+  /** `panel` = full-width Claude-style button for download page */
+  layout?: "badge" | "panel";
+}) {
+  if (layout === "panel") {
+    return (
+      <Link
+        href={STORE_LINKS.playStore}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`group flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-white/18 bg-transparent px-4 transition-all hover:border-white/35 hover:bg-white/[0.04] active:scale-[0.99] ${className}`}
+        aria-label="Get it on Google Play"
+      >
+        <GooglePlayIcon className="h-6 w-6 shrink-0 transition-transform duration-200 group-hover:scale-105" />
+        <span className="text-[15px] font-medium tracking-tight text-white">
+          Get it on Google Play
+        </span>
+      </Link>
+    );
+  }
+
   return (
     <div
       className={`flex flex-wrap items-center justify-center gap-3 ${className}`}

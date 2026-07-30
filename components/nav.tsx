@@ -140,7 +140,7 @@ export function Nav() {
                 onLinkClick={() => setMobileOpen(false)}
               />
               <Button href="/download" variant="primary" size="md" className="mt-3 w-full">
-                Start with PLANY
+                Start with Plany
               </Button>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LegalPage } from "@/components/legal-page";
 
 export const metadata = {
@@ -26,7 +27,42 @@ export default function PrivacyPage() {
         },
         {
           title: "Your Control",
-          body: "You can export, view, or delete your data anytime. Plany is built to give you full ownership over your digital life and routines.",
+          body: (
+            <>
+              <p>
+                You can export, view, or delete your data anytime. Plany is
+                built to give you full ownership over your digital life and
+                routines.
+              </p>
+              <p>
+                To delete your Plany Timeline account, open the app and go to{" "}
+                <strong className="font-medium text-plany-primary">
+                  Settings → Profile Account → Delete account
+                </strong>
+                . After you confirm, you are signed out and your data is
+                scheduled for removal. If you deleted by mistake, sign in again
+                with the same email within{" "}
+                <strong className="font-medium text-plany-primary">
+                  10 minutes
+                </strong>{" "}
+                to restore your account. After about{" "}
+                <strong className="font-medium text-plany-primary">
+                  30 days
+                </strong>
+                , deleted account data is permanently removed.
+              </p>
+              <p>
+                Full steps, what is deleted, and how to contact support:{" "}
+                <Link
+                  href="/blog/how-to-delete-your-plany-timeline-account"
+                  className="font-medium text-plany-primary underline decoration-white/20 underline-offset-4 transition-colors hover:decoration-white/50"
+                >
+                  How to delete your Plany Timeline account
+                </Link>
+                .
+              </p>
+            </>
+          ),
         },
         {
           title: "Security",

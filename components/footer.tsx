@@ -37,6 +37,11 @@ const FOOTER_COLUMNS: FooterColumn[] = [
     links: [
       { label: "Help Center", href: "/support" },
       { label: "Contact Support", href: "mailto:support@plany.space", external: true },
+      {
+        label: "Delete account",
+        href: "/blog/how-to-delete-your-plany-timeline-account",
+      },
+      { label: "Blog", href: "/blog" },
     ],
   },
   {
@@ -69,6 +74,13 @@ const socialIcons = {
   linkedin: Linkedin,
   instagram: Instagram,
   youtube: Youtube,
+} as const;
+
+const socialBrandClass = {
+  x: "hover:border-white/25 hover:bg-white/10 hover:text-white",
+  linkedin: "hover:border-[#0A66C2]/40 hover:bg-[#0A66C2]/15 hover:text-[#0A66C2]",
+  instagram: "hover:border-[#E1306C]/40 hover:bg-[#E1306C]/15 hover:text-[#E1306C]",
+  youtube: "hover:border-[#FF0000]/40 hover:bg-[#FF0000]/15 hover:text-[#FF0000]",
 } as const;
 
 function FooterNavLink({ link }: { link: FooterLink }) {
@@ -134,7 +146,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.label}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-plany-border bg-plany-surface/40 text-plany-secondary transition-all hover:border-white/20 hover:bg-white/5 hover:text-plany-primary"
+                    className={`flex h-9 w-9 items-center justify-center rounded-full border border-plany-border bg-plany-surface/40 text-plany-secondary transition-all ${socialBrandClass[link.id]}`}
                   >
                     <Icon className="h-3.5 w-3.5" />
                   </Link>

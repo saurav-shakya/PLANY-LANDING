@@ -40,42 +40,48 @@ export const PRICING_TIERS = [
     name: "Free",
     price: "$0",
     period: "forever",
-    description: "Plan your day without paying a cent.",
+    description: "Everything you need to plan today on a timeline.",
     features: [
       "Visual day timeline",
       "Time-based reminders",
       "Location nudges",
       "Basic AI check-ins",
     ],
-    cta: "Get started",
-    highlighted: false,
+    cta: "Get the app",
+    href: "/download",
+    badge: "Available now",
+    highlighted: true,
   },
   {
     name: "Pro",
     price: "$4.99",
     period: "/ month",
-    description: "More follow-ups, more insight.",
+    description: "Deeper follow-ups and weekly insight — launching soon.",
     features: [
       "All Free features",
       "Advanced AI tones",
       "Weekly insights",
       "Priority support",
     ],
-    cta: "Start free trial",
-    highlighted: true,
+    cta: "Join the waitlist",
+    href: "/download",
+    badge: "Coming soon",
+    highlighted: false,
   },
   {
     name: "Team",
     price: "$12",
     period: "/ user / mo",
-    description: "Shared planning for small teams.",
+    description: "Shared timelines for small crews who plan together.",
     features: [
       "All Pro features",
       "Shared timelines",
       "Team accountability",
       "Admin dashboard",
     ],
-    cta: "Contact us",
+    cta: "Talk to us",
+    href: "mailto:support@plany.space",
+    badge: "Early interest",
     highlighted: false,
   },
 ] as const;
@@ -218,9 +224,23 @@ export const FAQ_ITEMS = [
   },
 ];
 
-export const SOCIAL_PROOF = {
-  quote:
-    "I can finally see my day laid out, not buried in a list. The follow-ups keep me honest.",
-  author: "Early beta user",
-  role: "Product designer",
-};
+export const SOCIAL_PROOF = [
+  {
+    quote:
+      "I can finally see my day laid out, not buried in a list. The follow-ups keep me honest.",
+    author: "Maya",
+    role: "Product designer",
+  },
+  {
+    quote:
+      "Location nudges actually fire when I'm at the store. Reminds me like a friend, not an alarm.",
+    author: "Arjun",
+    role: "Founder",
+  },
+  {
+    quote:
+      "The AI check-in is the only thing that makes me finish tasks I keep pushing to tomorrow.",
+    author: "Leah",
+    role: "Freelance writer",
+  },
+] as const;

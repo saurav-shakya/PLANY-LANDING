@@ -1,10 +1,11 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Nav } from "@/components/nav";
 
 type LegalSection = {
   title: string;
-  body: string;
+  body: ReactNode;
 };
 
 type LegalPageProps = {
@@ -58,9 +59,13 @@ export function LegalPage({
                   <h2 className="text-lg font-medium text-plany-primary">
                     {index + 1}. {section.title}
                   </h2>
-                  <p className="mt-3 text-base leading-relaxed text-plany-secondary">
-                    {section.body}
-                  </p>
+                  <div className="mt-3 space-y-3 text-base leading-relaxed text-plany-secondary">
+                    {typeof section.body === "string" ? (
+                      <p>{section.body}</p>
+                    ) : (
+                      section.body
+                    )}
+                  </div>
                 </section>
               ))}
             </div>

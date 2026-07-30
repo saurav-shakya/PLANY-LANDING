@@ -20,6 +20,26 @@ const iconMap = {
   youtube: Youtube,
 } as const;
 
+/** Brand colors for social platforms */
+const brandStyles = {
+  x: {
+    icon: "text-white",
+    ring: "border-white/20 bg-white/10 group-hover:border-white/35 group-hover:bg-white/15",
+  },
+  linkedin: {
+    icon: "text-[#0A66C2]",
+    ring: "border-[#0A66C2]/30 bg-[#0A66C2]/15 group-hover:border-[#0A66C2]/50 group-hover:bg-[#0A66C2]/25",
+  },
+  instagram: {
+    icon: "text-[#E1306C]",
+    ring: "border-[#E1306C]/30 bg-gradient-to-br from-[#f9ce34]/15 via-[#ee2a7b]/15 to-[#6228d7]/20 group-hover:border-[#E1306C]/45 group-hover:from-[#f9ce34]/25 group-hover:via-[#ee2a7b]/25 group-hover:to-[#6228d7]/30",
+  },
+  youtube: {
+    icon: "text-[#FF0000]",
+    ring: "border-[#FF0000]/30 bg-[#FF0000]/15 group-hover:border-[#FF0000]/50 group-hover:bg-[#FF0000]/25",
+  },
+} as const;
+
 type CommunityPanelProps = {
   className?: string;
   onLinkClick?: () => void;
@@ -35,6 +55,8 @@ export function CommunityPanel({ className, onLinkClick }: CommunityPanelProps) 
     >
       {SOCIAL_LINKS.map((link) => {
         const Icon = iconMap[link.id];
+        const brand = brandStyles[link.id];
+
         return (
           <Link
             key={link.id}
@@ -44,8 +66,13 @@ export function CommunityPanel({ className, onLinkClick }: CommunityPanelProps) 
             onClick={onLinkClick}
             className="glass-card group flex items-center gap-4 p-4 transition-all hover:border-white/20 hover:bg-white/[0.07]"
           >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-colors group-hover:border-white/20 group-hover:bg-white/10">
-              <Icon className="h-5 w-5 text-plany-primary" />
+            <div
+              className={cn(
+                "flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-colors",
+                brand.ring
+              )}
+            >
+              <Icon className={cn("h-5 w-5", brand.icon)} />
             </div>
             <div className="min-w-0">
               <p className="truncate text-sm font-medium">{link.label}</p>
