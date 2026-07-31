@@ -5,7 +5,7 @@ import { getAllPosts } from "@/lib/blog/posts";
 export const metadata = {
   title: "Blog | Plany",
   description:
-    "Guides and updates for Plany Timeline — account help, product tips, and more.",
+    "Guides and updates for Plany Timeline: account help, product tips, and more.",
 };
 
 export default function BlogIndexPage() {
@@ -19,7 +19,7 @@ export default function BlogIndexPage() {
           Guides & updates
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-plany-secondary md:text-lg">
-          Practical help for Plany Timeline — account settings, privacy, and
+          Practical help for Plany Timeline: account settings, privacy, and
           getting the most from your day plan.
         </p>
       </div>

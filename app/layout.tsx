@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Plany — your day on a timeline",
+        alt: "Plany: your day on a timeline",
         type: "image/png",
       },
     ],

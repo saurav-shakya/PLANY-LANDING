@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { CommunityPanel } from "@/components/community-panel";
 import { Button } from "@/components/ui/button";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, STORE_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export function Nav() {
@@ -92,7 +92,7 @@ export function Nav() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Button href="/download" variant="primary" size="sm" className="hidden sm:inline-flex">
+            <Button href={STORE_LINKS.playStore} variant="primary" size="sm" className="hidden sm:inline-flex">
               Download Now
             </Button>
             <button
@@ -139,7 +139,7 @@ export function Nav() {
                 className="mt-2 grid-cols-1"
                 onLinkClick={() => setMobileOpen(false)}
               />
-              <Button href="/download" variant="primary" size="md" className="mt-3 w-full">
+              <Button href={STORE_LINKS.playStore} variant="primary" size="md" className="mt-3 w-full">
                 Start with Plany
               </Button>
             </div>

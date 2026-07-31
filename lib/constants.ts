@@ -1,5 +1,5 @@
 export const STORE_LINKS = {
-  playStore: "https://plany.space/blog/how-to-join-plany-timeline-beta",
+  playStore: "https://play.google.com/store/apps/details?id=com.timelineapp",
 };
 
 export const NAV_LINKS = [
@@ -35,10 +35,50 @@ export const SOCIAL_LINKS = [
   },
 ] as const;
 
+export type PricingCurrency = "USD" | "INR";
+
+const INDIA_LANG =
+  /(^|,)\s*(hi([-_][A-Za-z]+)?|([a-z]{2,3}[-_])?IN)(;|,|$)/i;
+
+/** True when Accept-Language looks India-focused (en-IN, hi, hi-IN, …). */
+export function acceptLanguageSuggestsIndia(
+  acceptLanguage: string | null | undefined
+): boolean {
+  return Boolean(acceptLanguage && INDIA_LANG.test(acceptLanguage));
+}
+
+/**
+ * Resolve display currency.
+ * Prefer Vercel geo. If missing (local/dev), fall back to Accept-Language.
+ */
+export function resolvePricingCurrency(options: {
+  vercelCountry?: string | null;
+  acceptLanguage?: string | null;
+}): { currency: PricingCurrency; fromGeo: boolean } {
+  const country = options.vercelCountry?.trim().toUpperCase() ?? "";
+
+  if (country === "IN") {
+    return { currency: "INR", fromGeo: true };
+  }
+  if (country) {
+    return { currency: "USD", fromGeo: true };
+  }
+  if (acceptLanguageSuggestsIndia(options.acceptLanguage)) {
+    return { currency: "INR", fromGeo: false };
+  }
+  return { currency: "USD", fromGeo: false };
+}
+
+/** Client fallback when geo header is absent (e.g. localhost). */
+export function timezoneSuggestsIndia(timeZone: string): boolean {
+  return timeZone === "Asia/Kolkata" || timeZone === "Asia/Calcutta";
+}
+
 export const PRICING_TIERS = [
   {
     name: "Free",
-    price: "$0",
+    priceUsd: "$0",
+    priceInr: "₹0",
     period: "forever",
     description: "Everything you need to plan today on a timeline.",
     features: [
@@ -48,15 +88,16 @@ export const PRICING_TIERS = [
       "Basic AI check-ins",
     ],
     cta: "Get the app",
-    href: "/download",
+    href: STORE_LINKS.playStore,
     badge: "Available now",
     highlighted: true,
   },
   {
     name: "Pro",
-    price: "$4.99",
+    priceUsd: "$4.99",
+    priceInr: "₹149",
     period: "/ month",
-    description: "Deeper follow-ups and weekly insight — launching soon.",
+    description: "Deeper follow-ups and weekly insight, launching soon.",
     features: [
       "All Free features",
       "Advanced AI tones",
@@ -70,7 +111,8 @@ export const PRICING_TIERS = [
   },
   {
     name: "Team",
-    price: "$12",
+    priceUsd: "$12",
+    priceInr: "₹999",
     period: "/ user / mo",
     description: "Shared timelines for small crews who plan together.",
     features: [

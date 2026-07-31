@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         },
         {
           title: "How We Use Your Data",
-          body: "Your data is used to improve your experience — to help you stay consistent, accountable, and aligned with your goals. Plany never sells your data or uses it for external advertising.",
+          body: "Your data is used to improve your experience: to help you stay consistent, accountable, and aligned with your goals. Plany never sells your data or uses it for external advertising.",
         },
         {
           title: "AI Processing",

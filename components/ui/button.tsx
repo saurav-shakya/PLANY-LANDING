@@ -44,8 +44,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", ...props }, ref) => {
     if ("href" in props && props.href) {
       const { href, children } = props;
+      const external = href.startsWith("http");
       return (
-        <Link href={href} className={buttonStyles(variant, size, className)}>
+        <Link
+          href={href}
+          className={buttonStyles(variant, size, className)}
+          {...(external
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+        >
           {children}
         </Link>
       );

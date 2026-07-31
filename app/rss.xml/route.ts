@@ -34,7 +34,7 @@ export function GET() {
   <channel>
     <title>Plany Blog</title>
     <link>${BASE_URL}/blog</link>
-    <description>Guides and updates for Plany Timeline — account help, product tips, and more.</description>
+    <description>Guides and updates for Plany Timeline: account help, product tips, and more.</description>
     <language>en</language>
 ${items}
   </channel>

@@ -55,7 +55,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Download",
     links: [
-      { label: "Get the app", href: "/download" },
+      { label: "Get the app", href: STORE_LINKS.playStore, external: true },
       { label: "Plany for Android", href: STORE_LINKS.playStore, external: true },
     ],
   },

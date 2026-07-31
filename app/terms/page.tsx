@@ -3,14 +3,14 @@ import { LegalPage } from "@/components/legal-page";
 export const metadata = {
   title: "Terms of Service | Plany",
   description:
-    "By using Plany, you agree to a simple promise: we help you stay consistent — and you use Plany responsibly.",
+    "By using Plany, you agree to a simple promise: we help you stay consistent, and you use Plany responsibly.",
 };
 
 export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of Service"
-      intro="By using Plany, you agree to a simple promise: we help you stay consistent — and you use Plany responsibly."
+      intro="By using Plany, you agree to a simple promise: we help you stay consistent, and you use Plany responsibly."
       sections={[
         {
           title: "Using Plany",

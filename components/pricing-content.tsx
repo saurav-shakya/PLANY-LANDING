@@ -1,12 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { StoreBadges } from "@/components/store-badges";
 import { Button } from "@/components/ui/button";
-import { PRICING_TIERS } from "@/lib/constants";
+import {
+  PRICING_TIERS,
+  timezoneSuggestsIndia,
+  type PricingCurrency,
+} from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-export function PricingContent() {
+export function PricingContent({
+  currency: initialCurrency = "USD",
+  allowClientFallback = false,
+}: {
+  currency?: PricingCurrency;
+  /** When true (no Vercel geo), refine with India timezone on the client. */
+  allowClientFallback?: boolean;
+}) {
+  const [currency, setCurrency] = useState(initialCurrency);
+
+  useEffect(() => {
+    setCurrency(initialCurrency);
+  }, [initialCurrency]);
+
+  useEffect(() => {
+    if (!allowClientFallback) return;
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (timezoneSuggestsIndia(timeZone)) {
+      setCurrency("INR");
+    }
+  }, [allowClientFallback]);
+
   return (
     <div className="mx-auto w-full max-w-5xl">
       <motion.div
@@ -22,71 +48,76 @@ export function PricingContent() {
           <span className="text-plany-secondary">Pro when you want more.</span>
         </h1>
         <p className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-plany-secondary md:text-lg">
-          Start on Free today. Pro and Team are on the roadmap — join from the
+          Start on Free today. Pro and Team are on the roadmap. Join from the
           app and we&apos;ll let early users in first.
         </p>
       </motion.div>
 
       <div className="mt-14 grid gap-4 md:grid-cols-3 md:items-stretch">
-        {PRICING_TIERS.map((tier, i) => (
-          <motion.div
-            key={tier.name}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.08 + i * 0.07 }}
-            className={cn(
-              "flex flex-col rounded-2xl border p-6 md:p-8",
-              tier.highlighted
-                ? "border-white/20 bg-white/[0.06] shadow-[0_0_60px_rgba(255,255,255,0.04)]"
-                : "border-white/[0.08] bg-[#0d0e10]/80"
-            )}
-          >
-            <div className="flex items-center justify-between gap-3">
-              <h2 className="text-lg font-medium">{tier.name}</h2>
-              <span
-                className={cn(
-                  "rounded-md px-2 py-0.5 text-[11px] font-medium tracking-wide",
-                  tier.highlighted
-                    ? "bg-plany-accent/15 text-plany-accent"
-                    : "bg-white/[0.06] text-plany-secondary"
-                )}
-              >
-                {tier.badge}
-              </span>
-            </div>
+        {PRICING_TIERS.map((tier, i) => {
+          const price =
+            currency === "INR" ? tier.priceInr : tier.priceUsd;
 
-            <div className="mt-5 flex items-baseline gap-1">
-              <span className="text-4xl font-semibold tracking-tight">
-                {tier.price}
-              </span>
-              <span className="text-sm text-plany-secondary">{tier.period}</span>
-            </div>
-            <p className="mt-3 text-sm leading-relaxed text-plany-secondary">
-              {tier.description}
-            </p>
-
-            <ul className="mt-6 flex-1 space-y-3">
-              {tier.features.map((feature) => (
-                <li
-                  key={feature}
-                  className="flex items-start gap-2.5 text-sm text-plany-secondary"
-                >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-plany-accent" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-
-            <Button
-              href={tier.href}
-              variant={tier.highlighted ? "primary" : "ghost"}
-              size="md"
-              className="mt-8 h-11 w-full"
+          return (
+            <motion.div
+              key={tier.name}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.08 + i * 0.07 }}
+              className={cn(
+                "flex flex-col rounded-2xl border p-6 md:p-8",
+                tier.highlighted
+                  ? "border-white/20 bg-white/[0.06] shadow-[0_0_60px_rgba(255,255,255,0.04)]"
+                  : "border-white/[0.08] bg-[#0d0e10]/80"
+              )}
             >
-              {tier.cta}
-            </Button>
-          </motion.div>
-        ))}
+              <div className="flex items-center justify-between gap-3">
+                <h2 className="text-lg font-medium">{tier.name}</h2>
+                <span
+                  className={cn(
+                    "rounded-md px-2 py-0.5 text-[11px] font-medium tracking-wide",
+                    tier.highlighted
+                      ? "bg-plany-accent/15 text-plany-accent"
+                      : "bg-white/[0.06] text-plany-secondary"
+                  )}
+                >
+                  {tier.badge}
+                </span>
+              </div>
+
+              <div className="mt-5 flex items-baseline gap-1">
+                <span className="text-4xl font-semibold tracking-tight">
+                  {price}
+                </span>
+                <span className="text-sm text-plany-secondary">{tier.period}</span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-plany-secondary">
+                {tier.description}
+              </p>
+
+              <ul className="mt-6 flex-1 space-y-3">
+                {tier.features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-start gap-2.5 text-sm text-plany-secondary"
+                  >
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-plany-accent" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <Button
+                href={tier.href}
+                variant={tier.highlighted ? "primary" : "ghost"}
+                size="md"
+                className="mt-8 h-11 w-full"
+              >
+                {tier.cta}
+              </Button>
+            </motion.div>
+          );
+        })}
       </div>
 
       <motion.div

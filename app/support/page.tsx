@@ -2,12 +2,13 @@ import Link from "next/link";
 import { Mail, MessageCircle, HelpCircle, UserX } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { Nav } from "@/components/nav";
+import { STORE_LINKS } from "@/lib/constants";
 
 const CHANNELS = [
   {
     icon: Mail,
     title: "Email",
-    description: "Bugs, account help, or feature ideas — we read every note.",
+    description: "Bugs, account help, or feature ideas. We read every note.",
     href: "mailto:support@plany.space",
     cta: "support@plany.space",
     external: false,
@@ -41,7 +42,7 @@ const CHANNELS = [
 
 export const metadata = {
   title: "Support | Plany",
-  description: "Get help with Plany — email, social, or FAQ.",
+  description: "Get help with Plany: email, social, or FAQ.",
 };
 
 export default function SupportPage() {
@@ -56,7 +57,7 @@ export default function SupportPage() {
               How can we help?
             </h1>
             <p className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-plany-secondary md:text-lg">
-              Small team, real humans. Pick a channel — we usually reply within
+              Small team, real humans. Pick a channel. We usually reply within
               a day.
             </p>
           </div>
@@ -93,7 +94,9 @@ export default function SupportPage() {
           <p className="mt-12 text-center text-sm text-plany-secondary">
             Looking for the app?{" "}
             <Link
-              href="/download"
+              href={STORE_LINKS.playStore}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-plany-primary underline decoration-white/20 underline-offset-4 transition-colors hover:decoration-white/50"
             >
               Download Plany
