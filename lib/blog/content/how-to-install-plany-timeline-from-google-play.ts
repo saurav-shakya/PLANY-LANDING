@@ -136,7 +136,7 @@ export const howToInstallFromGooglePlayPost: BlogPost = {
         {
           question: "Where can I get help after installing?",
           answer:
-            "Email support@plany.space, or visit the Support page on plany.space for other ways to reach us.",
+            "Email hq@plany.space, or visit the Support page on plany.space for other ways to reach us.",
         },
       ],
     },
@@ -165,8 +165,8 @@ export const howToInstallFromGooglePlayPost: BlogPost = {
           href: "/blog/how-to-delete-your-plany-timeline-account",
         },
         {
-          label: "support@plany.space",
-          href: "mailto:support@plany.space",
+          label: "hq@plany.space",
+          href: "mailto:hq@plany.space",
           external: true,
         },
       ],

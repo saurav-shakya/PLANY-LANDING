@@ -36,7 +36,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
     title: "Support",
     links: [
       { label: "Help Center", href: "/support" },
-      { label: "Contact Support", href: "mailto:support@plany.space", external: true },
+      { label: "Contact Support", href: "mailto:hq@plany.space", external: true },
       {
         label: "Delete account",
         href: "/blog/how-to-delete-your-plany-timeline-account",

@@ -122,7 +122,7 @@ export const PRICING_TIERS = [
       "Admin dashboard",
     ],
     cta: "Talk to us",
-    href: "mailto:support@plany.space",
+    href: "mailto:hq@plany.space",
     badge: "Early interest",
     highlighted: false,
   },

@@ -66,7 +66,7 @@ export default function PrivacyPage() {
         },
         {
           title: "Security",
-          body: "We protect your data with industry-standard security practices, including encryption in transit and access controls. If you have a security concern, contact support@plany.space.",
+          body: "We protect your data with industry-standard security practices, including encryption in transit and access controls. If you have a security concern, contact hq@plany.space.",
         },
       ]}
     />

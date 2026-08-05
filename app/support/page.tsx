@@ -9,8 +9,8 @@ const CHANNELS = [
     icon: Mail,
     title: "Email",
     description: "Bugs, account help, or feature ideas. We read every note.",
-    href: "mailto:support@plany.space",
-    cta: "support@plany.space",
+    href: "mailto:hq@plany.space",
+    cta: "hq@plany.space",
     external: false,
   },
   {

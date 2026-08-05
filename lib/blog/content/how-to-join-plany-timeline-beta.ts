@@ -196,8 +196,8 @@ export const howToJoinBetaPost: BlogPost = {
           external: true,
         },
         {
-          label: "support@plany.space",
-          href: "mailto:support@plany.space",
+          label: "hq@plany.space",
+          href: "mailto:hq@plany.space",
           external: true,
         },
       ],

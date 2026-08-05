@@ -71,7 +71,7 @@ export const howToDeleteAccountPost: BlogPost = {
     },
     {
       type: "p",
-      text: "After 10 minutes: You won’t be able to log in with that account. To request a restore, email support@plany.space.",
+      text: "After 10 minutes: You won’t be able to log in with that account. To request a restore, email hq@plany.space.",
     },
     {
       type: "ul",
@@ -125,7 +125,7 @@ export const howToDeleteAccountPost: BlogPost = {
         {
           question: "Can I delete my account from the web?",
           answer:
-            "The primary path is in the app: Settings → Profile Account → Delete account. You can also email support@plany.space to request deletion.",
+            "The primary path is in the app: Settings → Profile Account → Delete account. You can also email hq@plany.space to request deletion.",
         },
       ],
     },
@@ -143,8 +143,8 @@ export const howToDeleteAccountPost: BlogPost = {
         { label: "Privacy Policy", href: "/privacy" },
         { label: "Terms of Service", href: "/terms" },
         {
-          label: "support@plany.space",
-          href: "mailto:support@plany.space",
+          label: "hq@plany.space",
+          href: "mailto:hq@plany.space",
           external: true,
         },
       ],
