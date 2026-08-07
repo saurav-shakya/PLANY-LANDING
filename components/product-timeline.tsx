@@ -35,11 +35,11 @@ export function ProductTimeline() {
           <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04),transparent_65%)]" />
           <div className="overflow-hidden rounded-2xl border border-plany-border bg-plany-surface/50 p-4 md:p-8">
             <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-              <div className="order-2 lg:order-1">
+              <div className="order-2 flex justify-center lg:order-1">
                 <ScreenshotPanel
-                  src={SCREENSHOTS.timelineLive}
-                  alt="Plany live timeline with active tasks and remaining time"
-                  className="mx-auto max-w-[300px] lg:max-w-none"
+                  src={SCREENSHOTS.timeline}
+                  alt="Plany timeline showing Walk, Pan card apply, and daily tasks"
+                  className="w-full max-w-[300px]"
                 />
               </div>
               <div className="order-1 space-y-6 lg:order-2">

@@ -35,10 +35,14 @@ export const SOCIAL_LINKS = [
   },
 ] as const;
 
-export type PricingCurrency = "USD" | "INR";
+export type PricingRegion = "IN" | "MX" | "US";
+export type ProBillingInterval = "monthly" | "yearly" | "lifetime";
 
 const INDIA_LANG =
   /(^|,)\s*(hi([-_][A-Za-z]+)?|([a-z]{2,3}[-_])?IN)(;|,|$)/i;
+
+const MEXICO_LANG =
+  /(^|,)\s*(es([-_]MX)?|([a-z]{2,3}[-_])?MX)(;|,|$)/i;
 
 /** True when Accept-Language looks India-focused (en-IN, hi, hi-IN, …). */
 export function acceptLanguageSuggestsIndia(
@@ -47,26 +51,38 @@ export function acceptLanguageSuggestsIndia(
   return Boolean(acceptLanguage && INDIA_LANG.test(acceptLanguage));
 }
 
+export function acceptLanguageSuggestsMexico(
+  acceptLanguage: string | null | undefined
+): boolean {
+  return Boolean(acceptLanguage && MEXICO_LANG.test(acceptLanguage));
+}
+
 /**
- * Resolve display currency.
+ * Resolve pricing region from geo.
  * Prefer Vercel geo. If missing (local/dev), fall back to Accept-Language.
  */
-export function resolvePricingCurrency(options: {
+export function resolvePricingRegion(options: {
   vercelCountry?: string | null;
   acceptLanguage?: string | null;
-}): { currency: PricingCurrency; fromGeo: boolean } {
+}): { region: PricingRegion; fromGeo: boolean } {
   const country = options.vercelCountry?.trim().toUpperCase() ?? "";
 
   if (country === "IN") {
-    return { currency: "INR", fromGeo: true };
+    return { region: "IN", fromGeo: true };
+  }
+  if (country === "MX") {
+    return { region: "MX", fromGeo: true };
   }
   if (country) {
-    return { currency: "USD", fromGeo: true };
+    return { region: "US", fromGeo: true };
   }
   if (acceptLanguageSuggestsIndia(options.acceptLanguage)) {
-    return { currency: "INR", fromGeo: false };
+    return { region: "IN", fromGeo: false };
   }
-  return { currency: "USD", fromGeo: false };
+  if (acceptLanguageSuggestsMexico(options.acceptLanguage)) {
+    return { region: "MX", fromGeo: false };
+  }
+  return { region: "US", fromGeo: false };
 }
 
 /** Client fallback when geo header is absent (e.g. localhost). */
@@ -74,59 +90,146 @@ export function timezoneSuggestsIndia(timeZone: string): boolean {
   return timeZone === "Asia/Kolkata" || timeZone === "Asia/Calcutta";
 }
 
-export const PRICING_TIERS = [
-  {
-    name: "Free",
-    priceUsd: "$0",
-    priceInr: "₹0",
-    period: "forever",
-    description: "Everything you need to plan today on a timeline.",
-    features: [
-      "Visual day timeline",
-      "Time-based reminders",
-      "Location nudges",
-      "Basic AI check-ins",
-    ],
-    cta: "Get the app",
-    href: STORE_LINKS.playStore,
-    badge: "Available now",
-    highlighted: true,
+export function timezoneSuggestsMexico(timeZone: string): boolean {
+  return (
+    timeZone === "America/Mexico_City" ||
+    timeZone === "America/Cancun" ||
+    timeZone === "America/Monterrey" ||
+    timeZone === "America/Tijuana" ||
+    timeZone === "America/Mazatlan" ||
+    timeZone === "America/Chihuahua" ||
+    timeZone === "America/Hermosillo" ||
+    timeZone === "America/Merida"
+  );
+}
+
+export function regionFromTimezone(timeZone: string): PricingRegion | null {
+  if (timezoneSuggestsIndia(timeZone)) return "IN";
+  if (timezoneSuggestsMexico(timeZone)) return "MX";
+  return null;
+}
+
+/** Regional Pro prices from the launch price sheet. Yearly save % vs 12× monthly. */
+export const PRICING_BY_REGION = {
+  IN: {
+    free: "₹0",
+    monthly: "₹199",
+    yearly: "₹1499",
+    lifetime: "₹2499",
+    yearlySavePercent: 37,
+    periodLabels: {
+      monthly: "/ month",
+      yearly: "/ year",
+      lifetime: "once",
+    },
   },
-  {
-    name: "Pro",
-    priceUsd: "$4.99",
-    priceInr: "₹149",
-    period: "/ month",
-    description: "Deeper follow-ups and weekly insight, launching soon.",
-    features: [
-      "All Free features",
-      "Advanced AI tones",
-      "Weekly insights",
-      "Priority support",
-    ],
-    cta: "Join the waitlist",
-    href: "/download",
-    badge: "Coming soon",
-    highlighted: false,
+  MX: {
+    free: "$0",
+    monthly: "$3.99",
+    yearly: "$24.99",
+    lifetime: "$59.99",
+    yearlySavePercent: 48,
+    periodLabels: {
+      monthly: "/ month",
+      yearly: "/ year",
+      lifetime: "once",
+    },
   },
-  {
-    name: "Team",
-    priceUsd: "$12",
-    priceInr: "₹999",
-    period: "/ user / mo",
-    description: "Shared timelines for small crews who plan together.",
-    features: [
-      "All Pro features",
-      "Shared timelines",
-      "Team accountability",
-      "Admin dashboard",
-    ],
-    cta: "Talk to us",
-    href: "mailto:hq@plany.space",
-    badge: "Early interest",
-    highlighted: false,
+  US: {
+    free: "$0",
+    monthly: "$4.99",
+    yearly: "$24.99",
+    lifetime: "$89.99",
+    yearlySavePercent: 58,
+    periodLabels: {
+      monthly: "/ month",
+      yearly: "/ year",
+      lifetime: "once",
+    },
   },
-] as const;
+} as const;
+
+export const FREE_PLAN = {
+  name: "Free",
+  period: "14 days",
+  description: "Try Plany free for 14 days — plan your day with core AI help.",
+  features: [
+    "10 chats / day",
+    "Human-touch notifications",
+    "AI follow-up messages",
+    "Tasks, icons & theme customization",
+  ],
+  cta: "Get the app",
+  href: STORE_LINKS.playStore,
+  badge: "14 days free",
+} as const;
+
+export const PRO_PLAN = {
+  name: "Pro",
+  description:
+    "Deeper follow-ups, memory, and full customization for how you work.",
+  features: [
+    "20 chats / day",
+    "Human-touch notifications",
+    "Highly follow-up, task-related notifications",
+    "Notification customization",
+    "Memory",
+    "Notes (coming soon)",
+    "Analytics (coming soon)",
+    "Location-based reminders (coming soon)",
+    "Tasks, icons & theme customization",
+    "Visual day timeline",
+    "Time-based reminders",
+    "AI planning & accountability tones",
+  ],
+  cta: "Get Pro",
+  href: STORE_LINKS.playStore,
+  badge: "Most popular",
+} as const;
+
+/** Extra perk shown when Lifetime billing is selected. */
+export const LIFETIME_PERK =
+  "All future features included — free forever" as const;
+
+export type ComparisonValue = boolean | string | "soon";
+
+export const PRICING_COMPARISON: {
+  feature: string;
+  free: ComparisonValue;
+  pro: ComparisonValue;
+}[] = [
+  { feature: "AI chats / day", free: "10", pro: "20" },
+  { feature: "Human-touch notifications", free: true, pro: true },
+  { feature: "AI follow-up messages", free: true, pro: true },
+  {
+    feature: "Highly follow-up, task-related notifications",
+    free: false,
+    pro: true,
+  },
+  { feature: "Notification customization", free: false, pro: true },
+  { feature: "Memory", free: false, pro: true },
+  { feature: "Notes", free: false, pro: "soon" },
+  { feature: "Analytics", free: false, pro: "soon" },
+  { feature: "Location-based reminders", free: false, pro: "soon" },
+  { feature: "Tasks, icons & theme customization", free: true, pro: true },
+  { feature: "Visual day timeline", free: false, pro: true },
+  { feature: "Time-based reminders", free: false, pro: true },
+  { feature: "AI planning & accountability tones", free: false, pro: true },
+  {
+    feature: "All future features (Lifetime)",
+    free: false,
+    pro: "Lifetime",
+  },
+];
+
+export const PRO_BILLING_OPTIONS: {
+  id: ProBillingInterval;
+  label: string;
+}[] = [
+  { id: "monthly", label: "Monthly" },
+  { id: "yearly", label: "Yearly" },
+  { id: "lifetime", label: "Lifetime" },
+];
 
 export const HERO_CHIPS = [
   "Walk · 19 min",
@@ -247,7 +350,7 @@ export const FAQ_ITEMS = [
   {
     question: "Is Plany free?",
     answer:
-      "Yes. Plan your day and use core features free. Pro adds AI tones and weekly insights.",
+      "Yes — start with a 14-day Free plan (10 chats/day, human-touch notifications, and AI follow-ups). Pro unlocks 20 chats/day, deeper task follow-ups, memory, and more.",
   },
   {
     question: "Does Plany work offline?",
