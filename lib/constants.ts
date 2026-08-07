@@ -124,11 +124,11 @@ export const PRICING_BY_REGION = {
     },
   },
   MX: {
-    free: "$0",
-    monthly: "$3.99",
-    yearly: "$24.99",
-    lifetime: "$59.99",
-    yearlySavePercent: 48,
+    free: "MXN 0",
+    monthly: "MXN 69",
+    yearly: "MXN 459",
+    lifetime: "MXN 999",
+    yearlySavePercent: 45,
     periodLabels: {
       monthly: "/ month",
       yearly: "/ year",
@@ -164,6 +164,13 @@ export const FREE_PLAN = {
   badge: "14 days free",
 } as const;
 
+/** Razorpay checkout — same links for every country (incl. Mexico). */
+export const PRO_CHECKOUT_LINKS: Record<ProBillingInterval, string> = {
+  monthly: "https://rzp.io/rzp/S1VcHceP",
+  yearly: "https://rzp.io/rzp/mHAPBHG",
+  lifetime: "https://rzp.io/rzp/liSp1Lc",
+};
+
 export const PRO_PLAN = {
   name: "Pro",
   description:
@@ -183,7 +190,6 @@ export const PRO_PLAN = {
     "AI planning & accountability tones",
   ],
   cta: "Get Pro",
-  href: STORE_LINKS.playStore,
   badge: "Most popular",
 } as const;
 

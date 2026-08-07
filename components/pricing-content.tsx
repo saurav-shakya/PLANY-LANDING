@@ -9,6 +9,7 @@ import {
   FREE_PLAN,
   LIFETIME_PERK,
   PRO_BILLING_OPTIONS,
+  PRO_CHECKOUT_LINKS,
   PRO_PLAN,
   PRICING_BY_REGION,
   PRICING_COMPARISON,
@@ -353,7 +354,7 @@ export function PricingContent({
           </ul>
 
           <Button
-            href={PRO_PLAN.href}
+            href={PRO_CHECKOUT_LINKS[billing]}
             variant="primary"
             size="md"
             className="mt-5 h-10 w-full text-sm"
