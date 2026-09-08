@@ -7,7 +7,7 @@ import { resolvePricingRegion } from "@/lib/constants";
 export const metadata = {
   title: "Pricing | Plany",
   description:
-    "Free for 14 days. Upgrade to Pro monthly, yearly, or lifetime — with deeper follow-ups and memory.",
+    "Free for 14 days. Upgrade to Pro monthly, yearly, or lifetime - with deeper follow-ups and memory.",
 };
 
 export const dynamic = "force-dynamic";

@@ -57,7 +57,7 @@ export function Nav() {
           )}
         >
           <Link href="/" aria-label="Plany home" className="transition-opacity hover:opacity-90">
-            <PlanyBrand markSize={34} />
+            <PlanyBrand markSize={62} />
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">

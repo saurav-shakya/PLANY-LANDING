@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL } from "@/lib/constants";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,12 +15,12 @@ export const metadata: Metadata = {
   description:
     "Tasks on a timeline. Reminders that make sense. An AI that follows up when you don't.",
   // Canonical host is www (apex redirects); OG crawlers follow this for absolute image URLs
-  metadataBase: new URL("https://www.plany.space"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "Plany | Your day on a timeline",
     description:
       "Plan your day visually. Smart reminders, location nudges, and AI accountability.",
-    url: "https://www.plany.space",
+    url: SITE_URL,
     siteName: "Plany",
     type: "website",
     images: [
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Plany: your day on a timeline",
+        alt: "Plany: Your day on a timeline",
         type: "image/png",
       },
     ],

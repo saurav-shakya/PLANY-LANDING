@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPostLayout } from "@/components/blog-layout";
 import { getPost, getPostSlugs } from "@/lib/blog/posts";
+import { SITE_URL } from "@/lib/constants";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -52,14 +53,14 @@ export default async function BlogPostPage({ params }: PageProps) {
     author: {
       "@type": "Organization",
       name: "Plany",
-      url: "https://plany.space",
+      url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
       name: "Plany",
-      url: "https://plany.space",
+      url: SITE_URL,
     },
-    mainEntityOfPage: `https://plany.space/blog/${post.slug}`,
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
   };
 
   return (

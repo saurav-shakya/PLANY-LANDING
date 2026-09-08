@@ -1,8 +1,7 @@
 import { getAllPosts } from "@/lib/blog/posts";
+import { SITE_URL } from "@/lib/constants";
 
 export const dynamic = "force-static";
-
-const BASE_URL = "https://plany.space";
 
 function escapeXml(value: string): string {
   return value
@@ -16,7 +15,7 @@ function escapeXml(value: string): string {
 export function GET() {
   const items = getAllPosts()
     .map((post) => {
-      const url = `${BASE_URL}/blog/${post.slug}`;
+      const url = `${SITE_URL}/blog/${post.slug}`;
       const pubDate = new Date(`${post.date}T12:00:00Z`).toUTCString();
       return `    <item>
       <title>${escapeXml(post.title)}</title>
@@ -33,7 +32,7 @@ export function GET() {
 <rss version="2.0">
   <channel>
     <title>Plany Blog</title>
-    <link>${BASE_URL}/blog</link>
+    <link>${SITE_URL}/blog</link>
     <description>Guides and updates for Plany Timeline: account help, product tips, and more.</description>
     <language>en</language>
 ${items}

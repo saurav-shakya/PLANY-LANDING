@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog/posts";
-
-const BASE_URL = "https://plany.space";
+import { SITE_URL } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -15,12 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/delete-account",
     "/blog",
   ].map((path) => ({
-    url: `${BASE_URL}${path}`,
+    url: `${SITE_URL}${path}`,
     lastModified: new Date(),
   }));
 
   const postRoutes: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
+    url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: new Date(`${post.date}T12:00:00Z`),
   }));
 

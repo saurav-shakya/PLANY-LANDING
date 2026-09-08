@@ -1,3 +1,6 @@
+/** Canonical public site. Emails and social handles stay on plany.space. */
+export const SITE_URL = "https://www.tryplany.com";
+
 export const STORE_LINKS = {
   playStore: "https://play.google.com/store/apps/details?id=com.timelineapp",
 };

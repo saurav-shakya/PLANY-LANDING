@@ -52,13 +52,13 @@ export const howToInstallFromGooglePlayPost: BlogPost = {
       items: [
         "Open the **Google Play Store** app on your phone",
         "Tap the search bar at the top",
-        "Type **Plany Timeline** and open the result from Plany Space",
+        "Type **Plany Timeline** and open the result from Plany",
         "Tap **Install**, then **Open** when it is ready",
       ],
     },
     {
       type: "note",
-      text: "Look for the developer name Plany Space and the package that matches our listing. If you are unsure, use the direct link above so you land on the correct page.",
+      text: "Look for the developer name Plany and the package that matches our listing. If you are unsure, use the direct link above so you land on the correct page.",
     },
     {
       type: "h2",
@@ -136,7 +136,7 @@ export const howToInstallFromGooglePlayPost: BlogPost = {
         {
           question: "Where can I get help after installing?",
           answer:
-            "Email hq@plany.space, or visit the Support page on plany.space for other ways to reach us.",
+            "Email hq@plany.space, or visit the Support page on tryplany.com for other ways to reach us.",
         },
       ],
     },

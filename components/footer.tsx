@@ -133,7 +133,7 @@ export function Footer() {
         <div className="mt-14 border-t border-plany-border pt-8">
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <p className="text-sm text-plany-secondary">
-              © {new Date().getFullYear()} Plany Space. All rights reserved.
+              © {new Date().getFullYear()} Plany. All rights reserved.
             </p>
 
             <div className="flex items-center gap-2">

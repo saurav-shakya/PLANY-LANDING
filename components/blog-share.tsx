@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { SITE_URL } from "@/lib/constants";
 
 type BlogShareProps = {
   title: string;
@@ -67,7 +68,7 @@ function CheckIcon() {
 }
 
 export function BlogShare({ title, slug }: BlogShareProps) {
-  const url = `https://plany.space/blog/${slug}`;
+  const url = `${SITE_URL}/blog/${slug}`;
   const [copied, setCopied] = useState(false);
   const resetTimer = useRef<ReturnType<typeof setTimeout>>(null);
 
