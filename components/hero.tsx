@@ -3,45 +3,83 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { AwsStartupsBadge } from "@/components/aws-startups-badge";
-import { Chip } from "@/components/ui/chip";
+import { Sticker } from "@/components/sticker";
 import { StoreBadges } from "@/components/store-badges";
-import { HERO_CHIPS } from "@/lib/constants";
-import { fadeUpProps } from "@/lib/motion";
 import { PhoneMockup } from "@/components/phone-mockup";
-
-const chipPositions = [
-  "left-0 top-[12%] md:left-[2%] animate-float",
-  "right-0 top-[22%] md:right-[2%] animate-float-delayed",
-  "left-2 bottom-[28%] md:left-[4%] animate-float-delayed",
-  "right-0 bottom-[16%] md:right-[2%] animate-float",
-];
+import { ILLUSTRATIONS } from "@/lib/illustrations";
+import { fadeUpProps } from "@/lib/motion";
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="hero-glow relative overflow-visible px-4 pb-10 pt-28 md:px-6 md:pb-16 md:pt-36">
+    <section className="hero-glow relative overflow-hidden px-4 pb-8 pt-28 md:px-6 md:pb-12 md:pt-32">
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <Sticker
+          src={ILLUSTRATIONS.spark}
+          alt=""
+          size={92}
+          rotate={-18}
+          float
+          className="absolute left-[4%] top-28 hidden sm:block md:left-[8%] md:top-36"
+        />
+        <Sticker
+          src={ILLUSTRATIONS.check}
+          alt=""
+          size={78}
+          rotate={14}
+          float
+          className="absolute right-[6%] top-32 hidden sm:block md:right-[10%] md:top-40"
+        />
+        <Sticker
+          src={ILLUSTRATIONS.pin}
+          alt=""
+          size={70}
+          rotate={-8}
+          float
+          className="absolute bottom-24 left-[8%] hidden lg:block"
+        />
+        <Sticker
+          src={ILLUSTRATIONS.chat}
+          alt=""
+          size={74}
+          rotate={12}
+          float
+          className="absolute bottom-28 right-[7%] hidden lg:block"
+        />
+      </div>
+
       <div className="relative mx-auto max-w-5xl text-center">
-        <motion.div
-          {...fadeUpProps(reduceMotion)}
-          className="mb-7 flex justify-center"
-        >
+        <motion.div {...fadeUpProps(reduceMotion)} className="mb-6 flex justify-center">
           <AwsStartupsBadge />
         </motion.div>
 
         <motion.h1
           {...fadeUpProps(reduceMotion, 0.06)}
-          className="display-hero mx-auto max-w-4xl text-plany-primary"
+          className="display-hero mx-auto max-w-4xl text-balance text-plany-primary"
         >
-          your day, on a timeline.
+          your day,{" "}
+          <span className="relative inline-flex items-center">
+            on a
+            <Sticker
+              src={ILLUSTRATIONS.timeline}
+              alt=""
+              size={72}
+              rotate={-8}
+              float
+              priority
+              className="mx-1 hidden align-middle sm:inline-flex md:mx-2 md:!h-[88px] md:!w-[88px]"
+            />
+          </span>{" "}
+          timeline.
         </motion.h1>
 
         <motion.p
           {...fadeUpProps(reduceMotion, 0.14)}
           className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-plany-secondary md:text-lg"
         >
-          Time slots, duration, color. Reminders that fire at the right time
-          and place. An AI that asks if you finished.
+          Not another list. A vertical day — time, duration, color — then
+          reminders that fire, and an AI that asks if you finished.
         </motion.p>
 
         <motion.div
@@ -59,19 +97,27 @@ export function Hero() {
       </div>
 
       <motion.div
-        initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+        initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduceMotion ? 0 : 0.7, delay: reduceMotion ? 0 : 0.28 }}
-        className="relative mx-auto mt-12 max-w-4xl md:mt-16"
+        transition={{ duration: reduceMotion ? 0 : 0.75, delay: reduceMotion ? 0 : 0.28 }}
+        className="relative mx-auto mt-10 max-w-4xl md:mt-14"
       >
-        {HERO_CHIPS.map((chip, i) => (
-          <Chip
-            key={chip}
-            className={`absolute z-20 hidden border-white/10 bg-plany-surface/95 text-plany-primary shadow-lg shadow-black/30 backdrop-blur md:inline-flex ${chipPositions[i]}`}
-          >
-            {chip}
-          </Chip>
-        ))}
+        <Sticker
+          src={ILLUSTRATIONS.focus}
+          alt=""
+          size={96}
+          rotate={-12}
+          float
+          className="absolute -left-2 top-8 z-20 hidden md:block lg:-left-6"
+        />
+        <Sticker
+          src={ILLUSTRATIONS.timeline}
+          alt=""
+          size={110}
+          rotate={10}
+          float
+          className="absolute -right-2 top-16 z-20 hidden md:block lg:-right-4"
+        />
         <PhoneMockup />
       </motion.div>
     </section>

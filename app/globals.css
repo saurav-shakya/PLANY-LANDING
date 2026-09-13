@@ -108,6 +108,20 @@ body {
   }
 }
 
+@keyframes sticker-wiggle {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+.animate-sticker-wiggle {
+  animation: sticker-wiggle 4.5s ease-in-out infinite;
+}
+
 .animate-pulse-soft {
   animation: pulse-soft 2s ease-in-out infinite;
 }
@@ -162,9 +176,9 @@ body {
   pointer-events: none;
   background-color: var(--plany-neutral);
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 64px 64px;
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(22, 163, 74, 0.16), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 10% 20%, rgba(255, 255, 255, 0.04), transparent 50%),
+    radial-gradient(ellipse 35% 28% at 92% 12%, rgba(22, 163, 74, 0.08), transparent 50%);
 }
 
 .hero-glow {
@@ -247,7 +261,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-float-delayed,
-  .animate-pulse-soft {
+  .animate-pulse-soft,
+  .animate-sticker-wiggle {
     animation: none;
   }
 

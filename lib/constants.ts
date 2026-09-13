@@ -270,6 +270,8 @@ export const AUDIENCES = [
     title: "Class, study, and the deadline — on one scroll.",
     description:
       "See lectures and study blocks collide before they do. Duration lives on the timeline, not in your head.",
+    sticker: "/illustrations/sticker-student.png",
+    stickerAlt: "Illustrated notebook sticker for students",
   },
   {
     id: "founders",
@@ -277,6 +279,8 @@ export const AUDIENCES = [
     title: "Block the day. Get asked if it shipped.",
     description:
       "Time-box the pitch, the hire, the build. Plany checks back in the tone you pick.",
+    sticker: "/illustrations/sticker-founder.png",
+    stickerAlt: "Illustrated rocket sticker for founders",
   },
   {
     id: "freelancers",
@@ -284,6 +288,8 @@ export const AUDIENCES = [
     title: "Client work as hours, not another list.",
     description:
       "Put invoice day and deep work on the same line so the afternoon doesn't vanish.",
+    sticker: "/illustrations/sticker-freelance.png",
+    stickerAlt: "Illustrated laptop sticker for freelancers",
   },
   {
     id: "adhd",
@@ -291,6 +297,8 @@ export const AUDIENCES = [
     title: "Time you can see, not just remember.",
     description:
       "Color and duration make a time-blind day visible. Focus mode counts down so the block is real.",
+    sticker: "/illustrations/sticker-adhd.png",
+    stickerAlt: "Illustrated brain sticker for time-blind days",
   },
   {
     id: "errands",
@@ -298,6 +306,8 @@ export const AUDIENCES = [
     title: "Nudged when you're already there.",
     description:
       "Add a place to a task. Plany pings you at the store, not an hour after you left.",
+    sticker: "/illustrations/sticker-errands.png",
+    stickerAlt: "Illustrated tote-bag sticker for errands",
   },
 ] as const;
 

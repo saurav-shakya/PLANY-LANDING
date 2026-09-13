@@ -4,7 +4,9 @@ import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { Reveal } from "@/components/reveal";
+import { Sticker } from "@/components/sticker";
 import { AI_TONES, type ToneId } from "@/lib/constants";
+import { ILLUSTRATIONS } from "@/lib/illustrations";
 
 export function AiToneDemo() {
   const [activeTone, setActiveTone] = useState<ToneId>("normal");
@@ -18,8 +20,16 @@ export function AiToneDemo() {
           <p className="text-center text-sm font-medium tracking-tight text-plany-accent/90">
             AI accountability
           </p>
-          <h2 className="display-section mx-auto mt-3 max-w-2xl text-center">
+          <h2 className="display-section mx-auto mt-3 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-center">
             an AI that talks like you want
+            <Sticker
+              src={ILLUSTRATIONS.chat}
+              alt=""
+              size={64}
+              rotate={8}
+              float
+              className="hidden sm:inline-flex"
+            />
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-center text-base leading-relaxed text-plany-secondary">
             Pick how Plany follows up — Hard, Normal, Motivated, or
