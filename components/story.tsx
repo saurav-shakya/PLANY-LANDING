@@ -1,9 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { STORY_BEATS, ILLUSTRATIONS } from "@/lib/illustrations";
+import { STORY_BEATS } from "@/lib/illustrations";
+import { ListVsTime } from "@/components/list-vs-time";
+import { LocationDemo } from "@/components/location-demo";
 import { Reveal } from "@/components/reveal";
 import { Sticker } from "@/components/sticker";
+import { TimelineArt } from "@/components/timeline-art";
 import { cn } from "@/lib/utils";
 
 export function Story() {
@@ -24,31 +27,11 @@ export function Story() {
         </Reveal>
 
         <Reveal>
-          <figure className="relative overflow-hidden rounded-[28px] border border-white/10 bg-plany-surface shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
-            <Image
-              src={ILLUSTRATIONS.dayStory}
-              alt="Illustrated day floating as a glowing vertical timeline with walk, work, a grocery pin, and a check-in"
-              width={1600}
-              height={900}
-              className="h-auto w-full object-cover"
-              sizes="(max-width: 768px) 100vw, 1152px"
-            />
-          </figure>
+          <TimelineArt />
         </Reveal>
 
         <div className="mt-16 grid items-center gap-8 md:mt-20 lg:grid-cols-2 lg:gap-14">
-          <Reveal>
-            <figure className="overflow-hidden rounded-[28px] border border-white/10 bg-plany-surface">
-              <Image
-                src={ILLUSTRATIONS.listVsTime}
-                alt="Illustration of a crumpled todo list falling apart next to a glowing green timeline"
-                width={1200}
-                height={900}
-                className="h-auto w-full object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </figure>
-          </Reveal>
+          <ListVsTime />
           <Reveal delay={0.08}>
             <p className="text-sm font-medium tracking-tight text-plany-accent/90">
               what&apos;s in the way
@@ -67,11 +50,13 @@ export function Story() {
         <div className="mt-20 space-y-20 md:mt-28 md:space-y-28">
           {STORY_BEATS.map((beat, i) => {
             const imageFirst = i % 2 === 1;
+            const isLocation = beat.id === "location";
+
             return (
               <Reveal key={beat.id}>
                 <article
-                  id={beat.id === "timeline" ? undefined : beat.id}
-                  className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+                  id={beat.id}
+                  className="grid scroll-mt-24 items-center gap-10 lg:grid-cols-2 lg:gap-16"
                 >
                   <div className={cn(imageFirst ? "lg:order-2" : "lg:order-1")}>
                     <Sticker
@@ -88,20 +73,40 @@ export function Story() {
                     <p className="mt-4 max-w-md text-base leading-relaxed text-plany-secondary">
                       {beat.story}
                     </p>
+                    {isLocation ? (
+                      <ol className="mt-6 max-w-md space-y-3 text-sm text-plany-secondary">
+                        <li>
+                          <span className="font-medium text-plany-primary">1. Pin a place</span>
+                          {" — "}drop the store, campus, or home on the task.
+                        </li>
+                        <li>
+                          <span className="font-medium text-plany-primary">2. Keep walking</span>
+                          {" — "}Plany doesn&apos;t nag from the other side of town.
+                        </li>
+                        <li>
+                          <span className="font-medium text-plany-primary">3. Arrive, then it fires</span>
+                          {" — "}the nudge hits when you&apos;re actually there.
+                        </li>
+                      </ol>
+                    ) : null}
                   </div>
 
                   <div className={cn("relative", imageFirst ? "lg:order-1" : "lg:order-2")}>
-                    <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.5)]">
-                      <div className="relative mx-auto aspect-[9/19.5] w-full max-w-[280px] sm:max-w-[300px]">
-                        <Image
-                          src={beat.image}
-                          alt={beat.imageAlt}
-                          fill
-                          className="object-cover object-top"
-                          sizes="300px"
-                        />
+                    {isLocation ? (
+                      <LocationDemo />
+                    ) : (
+                      <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.5)]">
+                        <div className="relative mx-auto aspect-[9/19.5] w-full max-w-[280px] sm:max-w-[300px]">
+                          <Image
+                            src={beat.image}
+                            alt={beat.imageAlt}
+                            fill
+                            className="object-cover object-top"
+                            sizes="300px"
+                          />
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </article>
               </Reveal>

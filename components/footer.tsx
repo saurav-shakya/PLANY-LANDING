@@ -19,6 +19,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
     links: [
       { label: "How it works", href: "/#how-it-works" },
       { label: "The story", href: "/#product" },
+      { label: "Location nudges", href: "/#location" },
       { label: "Who it's for", href: "/#for" },
       { label: "Pricing", href: "/pricing" },
       { label: "FAQ", href: "/#faq" },

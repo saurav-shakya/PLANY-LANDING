@@ -1,6 +1,4 @@
 export const ILLUSTRATIONS = {
-  dayStory: "/illustrations/illust-day-story.png",
-  listVsTime: "/illustrations/illust-list-vs-time.png",
   timeline: "/illustrations/sticker-timeline.png",
   focus: "/illustrations/sticker-focus.png",
   pin: "/illustrations/sticker-pin.png",
@@ -44,7 +42,7 @@ export const STORY_BEATS = [
     overline: "the place",
     title: "nudged when you're already there",
     story:
-      "Add a place to a task. Time reminders still fire — and a ping hits when you're near the store, not an hour after you left.",
+      "Time reminders still fire. Location is the extra sense — Plany waits until you walk into the place, then asks for the thing you meant to do there.",
     image: "/screenshots/timeline-live.png",
     imageAlt: "Plany live timeline with a location reminder",
   },
