@@ -23,8 +23,8 @@
   --spacing-md: 24px;
   --spacing-lg: 48px;
   --spacing-xl: 120px;
-  --section-gap-mobile: 72px;
-  --section-gap-desktop: 96px;
+  --section-gap-mobile: 80px;
+  --section-gap-desktop: 128px;
 
   --background: var(--plany-neutral);
   --foreground: var(--plany-primary);
@@ -177,8 +177,71 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(255, 255, 255, 0.07), transparent 60%),
-    radial-gradient(ellipse 40% 30% at 80% 20%, rgba(233, 150, 149, 0.08), transparent 50%);
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(255, 255, 255, 0.06), transparent 60%),
+    radial-gradient(ellipse 42% 34% at 78% 18%, rgba(22, 163, 74, 0.1), transparent 55%);
+}
+
+.display-hero {
+  font-size: clamp(2.75rem, 9vw, 5.35rem);
+  font-weight: 560;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.display-section {
+  font-size: clamp(1.85rem, 4.6vw, 3.15rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.site-wrap {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.folk-card {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(13, 14, 16, 0.72);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 16px 40px rgba(0, 0, 0, 0.22);
+}
+
+.folk-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(13, 14, 16, 0.7);
+  padding: 0.5rem 0.95rem;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--plany-secondary);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.folk-chip:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--plany-primary);
+}
+
+.folk-chip[data-active="true"],
+.folk-chip[aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--plany-primary);
+  color: var(--plany-neutral);
+}
+
+.folk-chip:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.35);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -186,6 +249,10 @@ body {
   .animate-float-delayed,
   .animate-pulse-soft {
     animation: none;
+  }
+
+  .folk-chip {
+    transition: none;
   }
 
   html {

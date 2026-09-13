@@ -6,9 +6,7 @@ export const STORE_LINKS = {
 };
 
 export const NAV_LINKS = [
-  { label: "Product", href: "/#product" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Download", href: "/download" },
 ] as const;
 
 export const SOCIAL_LINKS = [
@@ -259,50 +257,105 @@ export const PROBLEMS = [
       "Wrong time, wrong place. Or nothing when you're finally there.",
   },
   {
-    title: "No accountability",
+    title: "Nobody asks if you finished",
     description:
       "You mark things done… or you don't. Nobody asks why.",
   },
 ];
 
-export const FEATURES = [
+export const AUDIENCES = [
   {
-    icon: "Clock" as const,
-    title: "See your whole day at a glance",
+    id: "students",
+    label: "for students",
+    title: "Class, study, and the deadline — on one scroll.",
     description:
-      "Tasks on a timeline, not lost in a list.",
+      "See lectures and study blocks collide before they do. Duration lives on the timeline, not in your head.",
   },
   {
-    icon: "Bell" as const,
-    title: "Reminds you at the right time",
+    id: "founders",
+    label: "for founders",
+    title: "Block the day. Get asked if it shipped.",
     description:
-      "Time reminders that match your day, not random pings.",
+      "Time-box the pitch, the hire, the build. Plany checks back in the tone you pick.",
   },
   {
-    icon: "MapPin" as const,
-    title: "Reminds you when you're near the place",
+    id: "freelancers",
+    label: "for freelancers",
+    title: "Client work as hours, not another list.",
     description:
-      "Buy groceries when you're at the store. Call mom when you're home.",
+      "Put invoice day and deep work on the same line so the afternoon doesn't vanish.",
   },
   {
-    icon: "Sparkles" as const,
-    title: "Your week planned in 30 seconds",
+    id: "adhd",
+    label: "for ADHD days",
+    title: "Time you can see, not just remember.",
     description:
-      "Tell Plany what you need. It builds the list.",
+      "Color and duration make a time-blind day visible. Focus mode counts down so the block is real.",
   },
   {
-    icon: "Settings2" as const,
-    title: "Notifications that fit how you work",
+    id: "errands",
+    label: "for errand-heavy days",
+    title: "Nudged when you're already there.",
     description:
-      "Customize how and when Plany nudges you for each task.",
+      "Add a place to a task. Plany pings you at the store, not an hour after you left.",
+  },
+] as const;
+
+export const USE_CASES = [
+  {
+    id: "timeline",
+    title: "Timeline-first",
+    description:
+      "Every task gets a time slot, duration, and color. Walk the day in one scroll.",
+    image: "/screenshots/timeline.png",
+    imageAlt: "Plany timeline with color-coded tasks and durations",
   },
   {
-    icon: "MessageCircle" as const,
-    title: "Done? Plany asks. Not done? It asks why.",
+    id: "focus",
+    title: "Focus countdown",
     description:
-      "Pick your tone: Hard · Normal · Motivated · Professional.",
+      "Lock in on a block. See time left, skip it, or mark it done.",
+    image: "/screenshots/focus-mode.png",
+    imageAlt: "Plany focus mode with a live countdown timer",
   },
-];
+  {
+    id: "location",
+    title: "Location nudges",
+    description:
+      "Time reminders that match the day — and a ping when you're near the place.",
+    image: "/screenshots/timeline-live.png",
+    imageAlt: "Plany live timeline with a location reminder",
+  },
+  {
+    id: "ai",
+    title: "AI check-ins",
+    description:
+      "Done? Plany asks. Not done? It asks why. Hard, Normal, Motivated, Professional.",
+    image: "/screenshots/tone-normal.jpg",
+    imageAlt: "Plany AI check-in notification in Normal tone",
+  },
+] as const;
+
+export const HOW_IT_WORKS = [
+  {
+    step: "01",
+    title: "Drop the day on a timeline",
+    description:
+      "Give each task a time, a duration, and a color. The day becomes something you can see.",
+  },
+  {
+    step: "02",
+    title: "Get reminded where it matters",
+    description:
+      "Time alerts when the block starts. Location nudges when you're already nearby.",
+  },
+  {
+    step: "03",
+    title: "Answer the check-in",
+    description:
+      "Plany asks if you finished. You pick the tone — from a nudge to no-nonsense.",
+  },
+] as const;
 
 export type ToneId = "hard" | "normal" | "motivated" | "professional";
 

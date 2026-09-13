@@ -33,7 +33,7 @@ export function PhoneFrame({
               fill
               className="object-cover object-top"
               sizes="(max-width: 768px) 300px, 360px"
-              priority={priority}
+              preload={priority}
             />
           </div>
         </div>

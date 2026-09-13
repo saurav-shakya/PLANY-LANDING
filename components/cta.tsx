@@ -1,26 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { StoreBadges } from "@/components/store-badges";
+import { Reveal } from "@/components/reveal";
 
 export function Cta() {
   return (
     <section className="section-gap px-4 md:px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.5 }}
-        className="mx-auto max-w-3xl glass-card px-6 py-14 text-center md:px-12 md:py-16"
-      >
-        <h2 className="text-3xl font-medium md:text-[2.125rem]">
-          Try it on your next busy day.
-        </h2>
-        <p className="mt-4 text-plany-secondary">Free to start. No card needed.</p>
-        <div className="mt-8 flex justify-center">
-          <StoreBadges />
+      <Reveal>
+        <div className="folk-card mx-auto max-w-3xl px-6 py-14 text-center md:px-12 md:py-16">
+          <h2 className="display-section">try it on your next busy day.</h2>
+          <p className="mt-4 text-base text-plany-secondary">
+            Free to start. No card needed. Android, on Google Play.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <StoreBadges />
+          </div>
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

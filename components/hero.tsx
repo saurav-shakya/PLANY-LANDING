@@ -1,17 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import { AwsStartupsBadge } from "@/components/aws-startups-badge";
 import { Chip } from "@/components/ui/chip";
 import { StoreBadges } from "@/components/store-badges";
 import { HERO_CHIPS } from "@/lib/constants";
+import { fadeUpProps } from "@/lib/motion";
 import { PhoneMockup } from "@/components/phone-mockup";
-
-const fadeUp = {
-  initial: { opacity: 0, y: 8 },
-  animate: { opacity: 1, y: 0 },
-};
 
 const chipPositions = [
   "left-0 top-[12%] md:left-[2%] animate-float",
@@ -21,56 +17,52 @@ const chipPositions = [
 ];
 
 export function Hero() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="hero-glow relative overflow-visible px-4 pb-16 pt-28 md:px-6 md:pb-24 md:pt-36">
+    <section className="hero-glow relative overflow-visible px-4 pb-10 pt-28 md:px-6 md:pb-16 md:pt-36">
       <div className="relative mx-auto max-w-5xl text-center">
         <motion.div
-          {...fadeUp}
-          transition={{ duration: 0.5 }}
-          className="mb-8 flex justify-center"
+          {...fadeUpProps(reduceMotion)}
+          className="mb-7 flex justify-center"
         >
           <AwsStartupsBadge />
         </motion.div>
 
-        <motion.p
-          {...fadeUp}
-          transition={{ duration: 0.5, delay: 0.04 }}
-          className="text-overline mb-4 text-plany-secondary"
-        >
-          Timeline planning · Smart reminders · AI accountability
-        </motion.p>
-
         <motion.h1
-          {...fadeUp}
-          transition={{ duration: 0.55, delay: 0.08 }}
-          className="mx-auto max-w-4xl text-[2.5rem] font-semibold leading-[1.08] tracking-tight md:text-[4rem] md:leading-[1.05]"
+          {...fadeUpProps(reduceMotion, 0.06)}
+          className="display-hero mx-auto max-w-4xl text-plany-primary"
         >
-          Your day, on a timeline.
+          your day, on a timeline.
         </motion.h1>
 
         <motion.p
-          {...fadeUp}
-          transition={{ duration: 0.55, delay: 0.16 }}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-plany-secondary md:text-lg"
+          {...fadeUpProps(reduceMotion, 0.14)}
+          className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-plany-secondary md:text-lg"
         >
-          Tasks on a timeline. Reminders that make sense. An AI that asks if
-          you did the thing.
+          Time slots, duration, color. Reminders that fire at the right time
+          and place. An AI that asks if you finished.
         </motion.p>
 
         <motion.div
-          {...fadeUp}
-          transition={{ duration: 0.55, delay: 0.24 }}
-          className="mt-8 flex justify-center"
+          {...fadeUpProps(reduceMotion, 0.22)}
+          className="mt-8 flex flex-col items-center gap-4"
         >
           <StoreBadges />
+          <Link
+            href="/pricing"
+            className="text-[15px] text-plany-secondary underline decoration-white/15 underline-offset-4 transition-colors hover:text-plany-primary hover:decoration-white/40"
+          >
+            see pricing
+          </Link>
         </motion.div>
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 8 }}
+        initial={reduceMotion ? false : { opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.32 }}
-        className="relative mx-auto mt-14 max-w-4xl md:mt-20"
+        transition={{ duration: reduceMotion ? 0 : 0.7, delay: reduceMotion ? 0 : 0.28 }}
+        className="relative mx-auto mt-12 max-w-4xl md:mt-16"
       >
         {HERO_CHIPS.map((chip, i) => (
           <Chip
@@ -81,22 +73,6 @@ export function Hero() {
           </Chip>
         ))}
         <PhoneMockup />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.5 }}
-        className="mt-10 flex justify-center md:mt-14"
-      >
-        <a
-          href="#product"
-          className="flex flex-col items-center gap-2 text-plany-secondary transition-colors hover:text-plany-primary"
-          aria-label="Scroll to product section"
-        >
-          <span className="text-overline">See how it works</span>
-          <ArrowDown className="h-5 w-5 animate-pulse-soft" />
-        </a>
       </motion.div>
     </section>
   );

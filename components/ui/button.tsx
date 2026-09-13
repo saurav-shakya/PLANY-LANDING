@@ -58,12 +58,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       );
     }
 
-    const { href: _href, ...buttonProps } = props as ButtonAsButton;
     return (
       <button
         ref={ref}
         className={buttonStyles(variant, size, className)}
-        {...buttonProps}
+        {...(props as ButtonAsButton)}
       />
     );
   }

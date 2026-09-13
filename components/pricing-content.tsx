@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, Minus } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { StoreBadges } from "@/components/store-badges";
 import { Button } from "@/components/ui/button";
 import {
@@ -106,19 +106,13 @@ export function PricingContent({
   /** When true (no Vercel geo), refine with timezone on the client. */
   allowClientFallback?: boolean;
 }) {
-  const [region, setRegion] = useState(initialRegion);
   const [billing, setBilling] = useState<ProBillingInterval>("yearly");
 
-  useEffect(() => {
-    setRegion(initialRegion);
-  }, [initialRegion]);
-
-  useEffect(() => {
-    if (!allowClientFallback) return;
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const fromTz = regionFromTimezone(timeZone);
-    if (fromTz) setRegion(fromTz);
-  }, [allowClientFallback]);
+  const timezoneRegion =
+    allowClientFallback && typeof window !== "undefined"
+      ? regionFromTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)
+      : null;
+  const region = timezoneRegion ?? initialRegion;
 
   const prices = PRICING_BY_REGION[region];
   const proPrice = prices[billing];
