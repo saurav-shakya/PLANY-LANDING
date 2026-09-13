@@ -32,7 +32,7 @@ export function AiToneDemo() {
             />
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-center text-base leading-relaxed text-plany-secondary">
-            Pick how Plany follows up — Hard, Normal, Motivated, or
+            Pick how Plany follows up: Hard, Normal, Motivated, or
             Professional.
           </p>
         </Reveal>
@@ -101,7 +101,7 @@ export function AiToneDemo() {
               </AnimatePresence>
             </div>
 
-            <div className="relative flex justify-center">
+            <div className="relative hidden justify-center lg:flex">
               <div
                 className="pointer-events-none absolute -inset-8 rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.1),transparent_70%)]"
                 aria-hidden

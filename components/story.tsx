@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { STORY_BEATS } from "@/lib/illustrations";
 import { ListVsTime } from "@/components/list-vs-time";
 import { LocationDemo } from "@/components/location-demo";
 import { Reveal } from "@/components/reveal";
 import { Sticker } from "@/components/sticker";
 import { TimelineArt } from "@/components/timeline-art";
-import { cn } from "@/lib/utils";
 
 export function Story() {
   return (
@@ -42,72 +40,59 @@ export function Story() {
             <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-plany-secondary">
               <li>Your todo app is a pile. You still don&apos;t know when anything happens.</li>
               <li>Pings hit at the wrong time, or never when you&apos;re finally there.</li>
-              <li>You mark it done — or you don&apos;t. Nobody asks why.</li>
+              <li>You mark it done, or you don&apos;t. Nobody asks why.</li>
             </ul>
           </Reveal>
         </div>
 
-        <div className="mt-20 space-y-20 md:mt-28 md:space-y-28">
+        <div className="mt-20 space-y-16 md:mt-28 md:space-y-24">
           {STORY_BEATS.map((beat, i) => {
-            const imageFirst = i % 2 === 1;
             const isLocation = beat.id === "location";
 
             return (
               <Reveal key={beat.id}>
                 <article
                   id={beat.id}
-                  className="grid scroll-mt-24 items-center gap-10 lg:grid-cols-2 lg:gap-16"
+                  className={
+                    isLocation
+                      ? "grid scroll-mt-24 items-center gap-8 lg:grid-cols-2 lg:gap-14"
+                      : "scroll-mt-24"
+                  }
                 >
-                  <div className={cn(imageFirst ? "lg:order-2" : "lg:order-1")}>
+                  <div>
                     <Sticker
                       src={beat.sticker}
                       alt={beat.stickerAlt}
-                      size={108}
+                      size={88}
                       rotate={i % 2 === 0 ? -8 : 10}
                       float
                     />
-                    <p className="mt-5 text-sm font-medium tracking-tight text-plany-accent/90">
+                    <p className="mt-4 text-sm font-medium tracking-tight text-plany-accent/90">
                       {beat.overline}
                     </p>
-                    <h3 className="display-section mt-3 max-w-md">{beat.title}</h3>
-                    <p className="mt-4 max-w-md text-base leading-relaxed text-plany-secondary">
+                    <h3 className="display-section mt-3 max-w-xl">{beat.title}</h3>
+                    <p className="mt-4 max-w-xl text-base leading-relaxed text-plany-secondary">
                       {beat.story}
                     </p>
                     {isLocation ? (
-                      <ol className="mt-6 max-w-md space-y-3 text-sm text-plany-secondary">
+                      <ol className="mt-6 max-w-xl space-y-3 text-sm text-plany-secondary">
                         <li>
-                          <span className="font-medium text-plany-primary">1. Pin a place</span>
-                          {" — "}drop the store, campus, or home on the task.
+                          <span className="font-medium text-plany-primary">1. Pin a place.</span>{" "}
+                          Drop the store, campus, or home on the task.
                         </li>
                         <li>
-                          <span className="font-medium text-plany-primary">2. Keep walking</span>
-                          {" — "}Plany doesn&apos;t nag from the other side of town.
+                          <span className="font-medium text-plany-primary">2. Keep walking.</span>{" "}
+                          Plany doesn&apos;t nag from the other side of town.
                         </li>
                         <li>
-                          <span className="font-medium text-plany-primary">3. Arrive, then it fires</span>
-                          {" — "}the nudge hits when you&apos;re actually there.
+                          <span className="font-medium text-plany-primary">3. Arrive, then it fires.</span>{" "}
+                          The nudge hits when you&apos;re actually there.
                         </li>
                       </ol>
                     ) : null}
                   </div>
 
-                  <div className={cn("relative", imageFirst ? "lg:order-1" : "lg:order-2")}>
-                    {isLocation ? (
-                      <LocationDemo />
-                    ) : (
-                      <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.5)]">
-                        <div className="relative mx-auto aspect-[9/19.5] w-full max-w-[280px] sm:max-w-[300px]">
-                          <Image
-                            src={beat.image}
-                            alt={beat.imageAlt}
-                            fill
-                            className="object-cover object-top"
-                            sizes="300px"
-                          />
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                  {isLocation ? <LocationDemo /> : null}
                 </article>
               </Reveal>
             );

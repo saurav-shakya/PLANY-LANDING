@@ -153,7 +153,7 @@ export const PRICING_BY_REGION = {
 export const FREE_PLAN = {
   name: "Free",
   period: "14 days",
-  description: "Try Plany free for 14 days — plan your day with core AI help.",
+  description: "Try Plany free for 14 days. Plan your day with core AI help.",
   features: [
     "10 chats / day",
     "Human-touch notifications",
@@ -196,7 +196,7 @@ export const PRO_PLAN = {
 
 /** Extra perk shown when Lifetime billing is selected. */
 export const LIFETIME_PERK =
-  "All future features included — free forever" as const;
+  "All future features included. Free forever" as const;
 
 export type ComparisonValue = boolean | string | "soon";
 
@@ -267,7 +267,7 @@ export const AUDIENCES = [
   {
     id: "students",
     label: "for students",
-    title: "Class, study, and the deadline — on one scroll.",
+    title: "Class, study, and the deadline. On one scroll.",
     description:
       "See lectures and study blocks collide before they do. Duration lives on the timeline, not in your head.",
     sticker: "/illustrations/sticker-student.png",
@@ -332,7 +332,7 @@ export const USE_CASES = [
     id: "location",
     title: "Location nudges",
     description:
-      "Time reminders that match the day — and a ping when you're near the place.",
+      "Time reminders that match the day, and a ping when you're near the place.",
     image: "/screenshots/timeline-live.png",
     imageAlt: "Plany live timeline with a location reminder",
   },
@@ -363,7 +363,7 @@ export const HOW_IT_WORKS = [
     step: "03",
     title: "Answer the check-in",
     description:
-      "Plany asks if you finished. You pick the tone — from a nudge to no-nonsense.",
+      "Plany asks if you finished. You pick the tone, from a nudge to no-nonsense.",
   },
 ] as const;
 
@@ -422,7 +422,7 @@ export const FAQ_ITEMS = [
   {
     question: "Is Plany free?",
     answer:
-      "Yes — start with a 14-day Free plan (10 chats/day, human-touch notifications, and AI follow-ups). Pro unlocks 20 chats/day, deeper task follow-ups, memory, and more.",
+      "Yes. Start with a 14-day Free plan (10 chats/day, human-touch notifications, and AI follow-ups). Pro unlocks 20 chats/day, deeper task follow-ups, memory, and more.",
   },
   {
     question: "Does Plany work offline?",
