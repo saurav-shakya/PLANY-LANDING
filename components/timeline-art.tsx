@@ -69,7 +69,7 @@ export function TimelineArt() {
             </p>
           </div>
           <p className="mt-8 hidden text-xs tracking-tight text-plany-secondary/80 md:block">
-            same tasks as the app — just drawn, not generated
+            same tasks as the app, just drawn, not generated
           </p>
         </div>
 
