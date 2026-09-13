@@ -20,7 +20,7 @@ export const STORY_BEATS = [
     overline: "the line",
     title: "put the day on a vertical timeline",
     story:
-      "Walk, work, errands. Each gets a time slot, a duration, and a color. You see the collision before it happens.",
+      "Walk, work, errands — each gets a time slot, a duration, and a color. You see the collision before it happens.",
     image: "/screenshots/timeline.png",
     imageAlt: "Plany timeline with Walk, Pan card apply, and daily tasks",
   },
@@ -42,7 +42,7 @@ export const STORY_BEATS = [
     overline: "the place",
     title: "nudged when you're already there",
     story:
-      "Time reminders still fire. Location is the extra sense. Plany waits until you walk into the place, then asks for the thing you meant to do there.",
+      "Time reminders still fire. Location is the extra sense — Plany waits until you walk into the place, then asks for the thing you meant to do there.",
     image: "/screenshots/timeline-live.png",
     imageAlt: "Plany live timeline with a location reminder",
   },

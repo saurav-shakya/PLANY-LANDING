@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AwsStartupsBadge } from "@/components/aws-startups-badge";
 import { Sticker } from "@/components/sticker";
 import { StoreBadges } from "@/components/store-badges";
+import { PhoneMockup } from "@/components/phone-mockup";
 import { ILLUSTRATIONS } from "@/lib/illustrations";
 import { fadeUpProps } from "@/lib/motion";
 
@@ -17,34 +18,34 @@ export function Hero() {
         <Sticker
           src={ILLUSTRATIONS.spark}
           alt=""
-          size={72}
+          size={92}
           rotate={-18}
           float
-          className="absolute left-[3%] top-24 hidden sm:block md:left-[8%] md:top-36 md:!h-[92px] md:!w-[92px]"
+          className="absolute left-[4%] top-28 hidden sm:block md:left-[8%] md:top-36"
         />
         <Sticker
           src={ILLUSTRATIONS.check}
           alt=""
-          size={64}
+          size={78}
           rotate={14}
           float
-          className="absolute right-[3%] top-28 hidden sm:block md:right-[10%] md:top-40 md:!h-[78px] md:!w-[78px]"
+          className="absolute right-[6%] top-32 hidden sm:block md:right-[10%] md:top-40"
         />
         <Sticker
           src={ILLUSTRATIONS.pin}
           alt=""
-          size={56}
+          size={70}
           rotate={-8}
           float
-          className="absolute bottom-10 left-[6%] hidden lg:block"
+          className="absolute bottom-24 left-[8%] hidden lg:block"
         />
         <Sticker
           src={ILLUSTRATIONS.chat}
           alt=""
-          size={60}
+          size={74}
           rotate={12}
           float
-          className="absolute bottom-12 right-[6%] hidden lg:block"
+          className="absolute bottom-28 right-[7%] hidden lg:block"
         />
       </div>
 
@@ -63,7 +64,7 @@ export function Hero() {
             <Sticker
               src={ILLUSTRATIONS.timeline}
               alt=""
-              size={56}
+              size={72}
               rotate={-8}
               float
               priority
@@ -77,7 +78,7 @@ export function Hero() {
           {...fadeUpProps(reduceMotion, 0.14)}
           className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-plany-secondary md:text-lg"
         >
-          Not another list. A vertical day: time, duration, color. Then
+          Not another list. A vertical day — time, duration, color — then
           reminders that fire, and an AI that asks if you finished.
         </motion.p>
 
@@ -94,6 +95,31 @@ export function Hero() {
           </Link>
         </motion.div>
       </div>
+
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: reduceMotion ? 0 : 0.75, delay: reduceMotion ? 0 : 0.28 }}
+        className="relative mx-auto mt-10 max-w-4xl md:mt-14"
+      >
+        <Sticker
+          src={ILLUSTRATIONS.focus}
+          alt=""
+          size={96}
+          rotate={-12}
+          float
+          className="absolute -left-2 top-8 z-20 hidden md:block lg:-left-6"
+        />
+        <Sticker
+          src={ILLUSTRATIONS.timeline}
+          alt=""
+          size={110}
+          rotate={10}
+          float
+          className="absolute -right-2 top-16 z-20 hidden md:block lg:-right-4"
+        />
+        <PhoneMockup />
+      </motion.div>
     </section>
   );
 }

@@ -7,7 +7,7 @@ export function LocationDemo() {
 
   return (
     <div className="folk-card overflow-hidden p-0">
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#101214] sm:aspect-[4/5] md:aspect-[5/6]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#101214] sm:aspect-[5/6]">
         <svg
           viewBox="0 0 320 400"
           className="absolute inset-0 h-full w-full"
@@ -71,8 +71,8 @@ export function LocationDemo() {
         <div
           className={
             reduceMotion
-              ? "absolute inset-x-3 bottom-3 z-20 rounded-2xl border border-white/10 bg-[#16181c]/95 p-3 shadow-[0_16px_40px_rgba(0,0,0,0.45)] backdrop-blur sm:inset-x-4 sm:bottom-4 sm:p-4"
-              : "nudge-card absolute inset-x-3 bottom-3 z-20 rounded-2xl border border-white/10 bg-[#16181c]/95 p-3 shadow-[0_16px_40px_rgba(0,0,0,0.45)] backdrop-blur sm:inset-x-4 sm:bottom-4 sm:p-4"
+              ? "absolute inset-x-4 bottom-4 z-20 rounded-2xl border border-white/10 bg-[#16181c]/95 p-4 shadow-[0_16px_40px_rgba(0,0,0,0.45)] backdrop-blur"
+              : "nudge-card absolute inset-x-4 bottom-4 z-20 rounded-2xl border border-white/10 bg-[#16181c]/95 p-4 shadow-[0_16px_40px_rgba(0,0,0,0.45)] backdrop-blur"
           }
           role="status"
           aria-live="polite"
@@ -81,7 +81,7 @@ export function LocationDemo() {
             location nudge
           </p>
           <p className="mt-1 text-sm font-medium text-plany-primary">
-            Groceries. You&apos;re already here
+            Groceries — you&apos;re already here
           </p>
           <p className="mt-1 text-xs leading-relaxed text-plany-secondary">
             Add a place to a task. Plany waits until you&apos;re nearby, then

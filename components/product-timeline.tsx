@@ -42,8 +42,8 @@ export function ProductTimeline() {
                     your whole day, one scroll away
                   </h2>
                   <p className="mt-4 text-base leading-relaxed text-plany-secondary">
-                    A vertical timeline for when things happen: time slot,
-                    duration, and color. Not just what&apos;s on your list.
+                    A vertical timeline for when things happen — time slot,
+                    duration, and color — not just what&apos;s on your list.
                   </p>
                 </div>
                 <ul className="space-y-4">

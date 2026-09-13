@@ -10,7 +10,7 @@ const BLOCKS = [
     meta: "19 min",
     color: "#22c55e",
     soft: "rgba(34,197,94,0.18)",
-    height: "4.5rem",
+    height: 72,
   },
   {
     time: "10:30",
@@ -19,7 +19,7 @@ const BLOCKS = [
     meta: "45 min",
     color: "#fb7185",
     soft: "rgba(251,113,133,0.16)",
-    height: "5.25rem",
+    height: 88,
   },
   {
     time: "12:00",
@@ -28,7 +28,7 @@ const BLOCKS = [
     meta: "1h 15m",
     color: "#fbbf24",
     soft: "rgba(251,191,36,0.16)",
-    height: "6rem",
+    height: 110,
   },
   {
     time: "13:55",
@@ -37,7 +37,7 @@ const BLOCKS = [
     meta: "1h · 2/2 subtasks",
     color: "#f87171",
     soft: "rgba(248,113,113,0.16)",
-    height: "5.5rem",
+    height: 96,
   },
 ] as const;
 
@@ -54,13 +54,13 @@ export function TimelineArt() {
             "radial-gradient(ellipse 70% 60% at 70% 20%, rgba(22,163,74,0.12), transparent 55%)",
         }}
       />
-      <div className="relative grid gap-8 px-4 py-7 sm:px-5 sm:py-8 md:grid-cols-[1fr_1.15fr] md:gap-12 md:px-10 md:py-12">
+      <div className="relative grid gap-8 px-5 py-8 md:grid-cols-[1fr_1.15fr] md:gap-12 md:px-10 md:py-12">
         <div className="flex flex-col justify-between">
           <div>
             <p className="text-sm font-medium tracking-tight text-plany-accent">
               today, drawn as a line
             </p>
-            <h3 className="mt-3 max-w-sm text-2xl font-medium tracking-tight sm:text-3xl md:text-4xl">
+            <h3 className="mt-3 max-w-sm text-3xl font-medium tracking-tight md:text-4xl">
               every block has a time, a length, and a color
             </h3>
             <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-plany-secondary">
@@ -69,7 +69,7 @@ export function TimelineArt() {
             </p>
           </div>
           <p className="mt-8 hidden text-xs tracking-tight text-plany-secondary/80 md:block">
-            same tasks as the app, drawn as a line
+            same tasks as the app — just drawn, not generated
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export function TimelineArt() {
                   duration: reduceMotion ? 0 : 0.45,
                   delay: reduceMotion ? 0 : i * 0.08,
                 }}
-                className="grid grid-cols-[3.5rem_1fr] items-stretch gap-2.5 sm:grid-cols-[4rem_1fr] sm:gap-3 md:grid-cols-[4.5rem_1fr]"
+                className="grid grid-cols-[4rem_1fr] items-stretch gap-3 md:grid-cols-[4.5rem_1fr]"
               >
                 <div className="pt-3 text-right">
                   <p className="text-xs font-medium tabular-nums text-plany-primary">
