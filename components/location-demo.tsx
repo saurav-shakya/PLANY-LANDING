@@ -81,7 +81,7 @@ export function LocationDemo() {
             location nudge
           </p>
           <p className="mt-1 text-sm font-medium text-plany-primary">
-            Groceries. You&apos;re already here
+            Groceries — you&apos;re already here
           </p>
           <p className="mt-1 text-xs leading-relaxed text-plany-secondary">
             Add a place to a task. Plany waits until you&apos;re nearby, then
