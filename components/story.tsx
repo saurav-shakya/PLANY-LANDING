@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { STORY_BEATS } from "@/lib/illustrations";
+import { AppScreenshot } from "@/components/phone-frame";
 import { ListVsTime } from "@/components/list-vs-time";
 import { LocationDemo } from "@/components/location-demo";
 import { Reveal } from "@/components/reveal";
@@ -42,7 +42,7 @@ export function Story() {
             <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-plany-secondary">
               <li>Your todo app is a pile. You still don&apos;t know when anything happens.</li>
               <li>Pings hit at the wrong time, or never when you&apos;re finally there.</li>
-              <li>You mark it done — or you don&apos;t. Nobody asks why.</li>
+              <li>You mark it done, or you don&apos;t. Nobody asks why.</li>
             </ul>
           </Reveal>
         </div>
@@ -76,16 +76,16 @@ export function Story() {
                     {isLocation ? (
                       <ol className="mt-6 max-w-md space-y-3 text-sm text-plany-secondary">
                         <li>
-                          <span className="font-medium text-plany-primary">1. Pin a place</span>
-                          {" — "}drop the store, campus, or home on the task.
+                          <span className="font-medium text-plany-primary">1. Pin a place.</span>{" "}
+                          Drop the store, campus, or home on the task.
                         </li>
                         <li>
-                          <span className="font-medium text-plany-primary">2. Keep walking</span>
-                          {" — "}Plany doesn&apos;t nag from the other side of town.
+                          <span className="font-medium text-plany-primary">2. Keep walking.</span>{" "}
+                          Plany doesn&apos;t nag from the other side of town.
                         </li>
                         <li>
-                          <span className="font-medium text-plany-primary">3. Arrive, then it fires</span>
-                          {" — "}the nudge hits when you&apos;re actually there.
+                          <span className="font-medium text-plany-primary">3. Arrive, then it fires.</span>{" "}
+                          The nudge hits when you&apos;re actually there.
                         </li>
                       </ol>
                     ) : null}
@@ -95,17 +95,7 @@ export function Story() {
                     {isLocation ? (
                       <LocationDemo />
                     ) : (
-                      <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.5)]">
-                        <div className="relative mx-auto aspect-[9/19.5] w-full max-w-[280px] sm:max-w-[300px]">
-                          <Image
-                            src={beat.image}
-                            alt={beat.imageAlt}
-                            fill
-                            className="object-cover object-top"
-                            sizes="300px"
-                          />
-                        </div>
-                      </div>
+                      <AppScreenshot src={beat.image} alt={beat.imageAlt} />
                     )}
                   </div>
                 </article>

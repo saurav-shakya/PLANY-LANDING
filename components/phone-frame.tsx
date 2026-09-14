@@ -48,15 +48,16 @@ type ScreenshotPanelProps = {
   className?: string;
 };
 
-export function ScreenshotPanel({ src, alt, className }: ScreenshotPanelProps) {
+/** Screenshot only. No black phone chrome or full-width black grid. */
+export function AppScreenshot({ src, alt, className }: ScreenshotPanelProps) {
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[1.75rem] border border-plany-border bg-[#f8f8f8] shadow-[0_20px_60px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.06]",
+        "mx-auto w-full max-w-[300px] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#f8f8f8] shadow-[0_20px_60px_rgba(0,0,0,0.35)]",
         className
       )}
     >
-      <div className="relative mx-auto aspect-[9/19.5] w-full max-w-[300px]">
+      <div className="relative aspect-[9/19.5] w-full">
         <Image
           src={src}
           alt={alt}
@@ -67,4 +68,8 @@ export function ScreenshotPanel({ src, alt, className }: ScreenshotPanelProps) {
       </div>
     </div>
   );
+}
+
+export function ScreenshotPanel({ src, alt, className }: ScreenshotPanelProps) {
+  return <AppScreenshot src={src} alt={alt} className={className} />;
 }

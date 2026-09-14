@@ -78,7 +78,7 @@ export function Hero() {
           {...fadeUpProps(reduceMotion, 0.14)}
           className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-plany-secondary md:text-lg"
         >
-          Not another list. A vertical day — time, duration, color — then
+          Not another list. A vertical day: time, duration, color. Then
           reminders that fire, and an AI that asks if you finished.
         </motion.p>
 
