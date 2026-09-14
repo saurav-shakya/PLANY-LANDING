@@ -17,8 +17,10 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Product",
     links: [
-      { label: "Features", href: "/#features" },
-      { label: "Timeline", href: "/#product" },
+      { label: "How it works", href: "/#how-it-works" },
+      { label: "The story", href: "/#product" },
+      { label: "Location nudges", href: "/#location" },
+      { label: "Who it's for", href: "/#for" },
       { label: "Pricing", href: "/pricing" },
       { label: "FAQ", href: "/#faq" },
     ],
@@ -110,8 +112,8 @@ function FooterNavLink({ link }: { link: FooterLink }) {
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-plany-border bg-plany-neutral px-4 pt-14 pb-10 md:px-6 md:pt-16">
-      <div className="mx-auto max-w-5xl">
+    <footer className="mt-auto border-t border-plany-border bg-plany-neutral px-4 pt-16 pb-10 md:px-6 md:pt-20">
+      <div className="mx-auto max-w-6xl">
         <nav
           aria-label="Footer"
           className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-8"

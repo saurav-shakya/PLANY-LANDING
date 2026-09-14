@@ -1,39 +1,30 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ScreenshotPanel } from "@/components/phone-frame";
+import { Reveal } from "@/components/reveal";
 import { SCREENSHOTS } from "@/lib/screenshots";
+
+const DETAILS = [
+  {
+    label: "Color-coded blocks",
+    detail: "Walk, work, errands. Each gets its own color.",
+  },
+  {
+    label: "Subtasks & notes",
+    detail: "Break big tasks into checklists without losing the timeline view.",
+  },
+  {
+    label: "Tap to expand",
+    detail: "Open any task for details, edit, complete, or skip.",
+  },
+];
 
 export function ProductTimeline() {
   return (
-    <section id="product" className="section-gap px-4 md:px-6">
+    <section id="product" className="scroll-mt-24 px-4 pb-4 md:px-6">
       <div className="mx-auto max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="mb-12 text-center md:mb-16"
-        >
-          <p className="text-overline text-plany-secondary">The product</p>
-          <h2 className="mt-3 text-3xl font-medium md:text-[2.125rem]">
-            Your whole day, one scroll away
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-plany-secondary">
-            A vertical timeline for when things happen, not just what&apos;s on
-            your list.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55 }}
-          className="relative"
-        >
-          <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04),transparent_65%)]" />
-          <div className="overflow-hidden rounded-2xl border border-plany-border bg-plany-surface/50 p-4 md:p-8">
+        <Reveal>
+          <div className="folk-card overflow-hidden p-5 md:p-8">
             <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
               <div className="order-2 flex justify-center lg:order-1">
                 <ScreenshotPanel
@@ -44,33 +35,24 @@ export function ProductTimeline() {
               </div>
               <div className="order-1 space-y-6 lg:order-2">
                 <div>
-                  <h3 className="text-2xl font-medium">Timeline-first planning</h3>
-                  <p className="mt-3 text-base leading-relaxed text-plany-secondary">
-                    Every task gets a time slot, duration, and color. Walk through
-                    your morning, block out work, track subtasks. All on one
-                    timeline.
+                  <p className="text-sm font-medium tracking-tight text-plany-accent/90">
+                    the product
+                  </p>
+                  <h2 className="display-section mt-3">
+                    your whole day, one scroll away
+                  </h2>
+                  <p className="mt-4 text-base leading-relaxed text-plany-secondary">
+                    A vertical timeline for when things happen: time slot,
+                    duration, and color. Not just what&apos;s on your list.
                   </p>
                 </div>
                 <ul className="space-y-4">
-                  {[
-                    {
-                      label: "Color-coded blocks",
-                      detail: "Walk, work, errands. Each gets its own color.",
-                    },
-                    {
-                      label: "Subtasks & notes",
-                      detail: "Break big tasks into checklists without losing the timeline view.",
-                    },
-                    {
-                      label: "Tap to expand",
-                      detail: "Open any task for details, edit, complete, or skip.",
-                    },
-                  ].map((item) => (
+                  {DETAILS.map((item) => (
                     <li
                       key={item.label}
-                      className="border-l-2 border-plany-border-strong pl-4"
+                      className="border-l-2 border-plany-accent/40 pl-4"
                     >
-                      <p className="font-medium">{item.label}</p>
+                      <p className="font-medium tracking-tight">{item.label}</p>
                       <p className="mt-1 text-sm text-plany-secondary">
                         {item.detail}
                       </p>
@@ -80,7 +62,7 @@ export function ProductTimeline() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

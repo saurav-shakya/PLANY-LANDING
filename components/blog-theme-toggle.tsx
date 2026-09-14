@@ -1,32 +1,48 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "plany-blog-theme";
+const listeners = new Set<() => void>();
+
+function getBlogTheme() {
+  try {
+    return localStorage.getItem(STORAGE_KEY) === "light";
+  } catch {
+    return false;
+  }
+}
+
+function applyBlogTheme(light: boolean) {
+  document
+    .querySelector("[data-blog-theme-scope]")
+    ?.classList.toggle("blog-light", light);
+}
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+}
+
+function setBlogTheme(light: boolean) {
+  try {
+    localStorage.setItem(STORAGE_KEY, light ? "light" : "dark");
+  } catch {
+    /* ignore write failures */
+  }
+  applyBlogTheme(light);
+  listeners.forEach((listener) => listener());
+}
 
 export function BlogThemeToggle() {
-  const [isLight, setIsLight] = useState(false);
+  const isLight = useSyncExternalStore(subscribe, getBlogTheme, () => false);
 
-  useEffect(() => {
-    try {
-      const light = localStorage.getItem(STORAGE_KEY) === "light";
-      setIsLight(light);
-      // Covers client-side navigation, where the inline script does not re-run
-      document
-        .querySelector("[data-blog-theme-scope]")
-        ?.classList.toggle("blog-light", light);
-    } catch {}
-  }, []);
+  if (typeof document !== "undefined") {
+    applyBlogTheme(isLight);
+  }
 
   const toggle = () => {
-    const next = !isLight;
-    setIsLight(next);
-    document
-      .querySelector("[data-blog-theme-scope]")
-      ?.classList.toggle("blog-light", next);
-    try {
-      localStorage.setItem(STORAGE_KEY, next ? "light" : "dark");
-    } catch {}
+    setBlogTheme(!isLight);
   };
 
   return (

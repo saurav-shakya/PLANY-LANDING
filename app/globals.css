@@ -23,8 +23,8 @@
   --spacing-md: 24px;
   --spacing-lg: 48px;
   --spacing-xl: 120px;
-  --section-gap-mobile: 72px;
-  --section-gap-desktop: 96px;
+  --section-gap-mobile: 80px;
+  --section-gap-desktop: 128px;
 
   --background: var(--plany-neutral);
   --foreground: var(--plany-primary);
@@ -108,6 +108,83 @@ body {
   }
 }
 
+@keyframes sticker-wiggle {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+.animate-sticker-wiggle {
+  animation: sticker-wiggle 4.5s ease-in-out infinite;
+}
+
+@keyframes you-walk {
+  0% {
+    left: 16%;
+    top: 74%;
+  }
+  46% {
+    left: 64%;
+    top: 38%;
+  }
+  100% {
+    left: 64%;
+    top: 38%;
+  }
+}
+
+@keyframes geo-pulse {
+  0%,
+  44% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.75);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes nudge-pop {
+  0%,
+  46% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  54%,
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.you-dot {
+  left: 16%;
+  top: 74%;
+  animation: you-walk 9s ease-in-out infinite;
+}
+
+.geo-ring {
+  animation: geo-pulse 9s ease-out infinite;
+}
+
+.nudge-card {
+  opacity: 0;
+  animation: nudge-pop 9s ease-out infinite;
+}
+
 .animate-pulse-soft {
   animation: pulse-soft 2s ease-in-out infinite;
 }
@@ -162,9 +239,9 @@ body {
   pointer-events: none;
   background-color: var(--plany-neutral);
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 64px 64px;
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(22, 163, 74, 0.16), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 10% 20%, rgba(255, 255, 255, 0.04), transparent 50%),
+    radial-gradient(ellipse 35% 28% at 92% 12%, rgba(22, 163, 74, 0.08), transparent 50%);
 }
 
 .hero-glow {
@@ -177,15 +254,86 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(255, 255, 255, 0.07), transparent 60%),
-    radial-gradient(ellipse 40% 30% at 80% 20%, rgba(233, 150, 149, 0.08), transparent 50%);
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(255, 255, 255, 0.06), transparent 60%),
+    radial-gradient(ellipse 42% 34% at 78% 18%, rgba(22, 163, 74, 0.1), transparent 55%);
+}
+
+.display-hero {
+  font-size: clamp(2.75rem, 9vw, 5.35rem);
+  font-weight: 560;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.display-section {
+  font-size: clamp(1.85rem, 4.6vw, 3.15rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.site-wrap {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.folk-card {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(13, 14, 16, 0.72);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 16px 40px rgba(0, 0, 0, 0.22);
+}
+
+.folk-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(13, 14, 16, 0.7);
+  padding: 0.5rem 0.95rem;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--plany-secondary);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.folk-chip:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--plany-primary);
+}
+
+.folk-chip[data-active="true"],
+.folk-chip[aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--plany-primary);
+  color: var(--plany-neutral);
+}
+
+.folk-chip:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.35);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-float-delayed,
-  .animate-pulse-soft {
+  .animate-pulse-soft,
+  .animate-sticker-wiggle,
+  .you-dot,
+  .geo-ring,
+  .nudge-card {
     animation: none;
+  }
+
+  .folk-chip {
+    transition: none;
   }
 
   html {
