@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { AwsStartupsBadge } from "@/components/aws-startups-badge";
+import { BackedByBadge } from "@/components/backed-by-badge";
 import { Sticker } from "@/components/sticker";
 import { StoreBadges } from "@/components/store-badges";
 import { PhoneMockup } from "@/components/phone-mockup";
@@ -51,7 +51,7 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-5xl text-center">
         <motion.div {...fadeUpProps(reduceMotion)} className="mb-6 flex justify-center">
-          <AwsStartupsBadge />
+          <BackedByBadge />
         </motion.div>
 
         <motion.h1
