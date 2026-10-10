@@ -59,19 +59,7 @@ export function Hero() {
           className="display-hero mx-auto max-w-4xl text-balance text-plany-primary"
         >
           your day,{" "}
-          <span className="relative inline-flex items-center">
-            on a
-            <Sticker
-              src={ILLUSTRATIONS.timeline}
-              alt=""
-              size={72}
-              rotate={-8}
-              float
-              priority
-              className="mx-1 hidden align-middle sm:inline-flex md:mx-2 md:!h-[88px] md:!w-[88px]"
-            />
-          </span>{" "}
-          timeline.
+          <span className="whitespace-nowrap">on a timeline.</span>
         </motion.h1>
 
         <motion.p
