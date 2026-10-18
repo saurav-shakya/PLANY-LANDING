@@ -3,6 +3,25 @@ import { Mail, MessageCircle, HelpCircle, UserX } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { Nav } from "@/components/nav";
 import { STORE_LINKS } from "@/lib/constants";
+import { Metadata } from "next";
+
+const BASE_URL = "https://www.tryplany.com";
+
+export const metadata: Metadata = {
+  title: "Support & Help Center | Plany",
+  description: "Get help with Plany: Contact support via email, reach out on Twitter/X, or browse our FAQ and account management guides.",
+  alternates: {
+    canonical: `${BASE_URL}/support`,
+  },
+  openGraph: {
+    title: "Support & Help Center | Plany",
+    description: "Get in touch with Plany support for account help, bug reports, or feature suggestions.",
+    url: `${BASE_URL}/support`,
+    siteName: "Plany",
+    type: "website",
+  },
+};
+
 
 const CHANNELS = [
   {
@@ -40,13 +59,29 @@ const CHANNELS = [
   },
 ] as const;
 
-export const metadata = {
-  title: "Support | Plany",
-  description: "Get help with Plany: email, social, or FAQ.",
-};
 
 export default function SupportPage() {
+  const supportSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Plany Support Page",
+    url: `${BASE_URL}/support`,
+    mainEntity: {
+      "@type": "Organization",
+      name: "Plany",
+      url: BASE_URL,
+      email: "hq@plany.space",
+      sameAs: ["https://x.com/sauravv_x"],
+    },
+  };
+
   return (
+    <>
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(supportSchema) }}
+      />
+   
     <div className="page-grid relative min-h-full">
       <Nav />
       <main className="flex flex-1 flex-col px-4 pb-24 pt-28 md:px-6 md:pt-36">
@@ -106,5 +141,6 @@ export default function SupportPage() {
       </main>
       <Footer />
     </div>
+     </>
   );
 }

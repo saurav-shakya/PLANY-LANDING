@@ -11,17 +11,39 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Plany | Your day on a timeline",
+  title: {
+    default: "Plany | Your day on a timeline",
+    template: "%s | Plany",
+  },
   description:
-    "Tasks on a timeline. Reminders that make sense. An AI that follows up when you don't.",
-  // Canonical host is www (apex redirects); OG crawlers follow this for absolute image URLs
+    "Tasks on a timeline. Reminders that make sense. An AI that follows up when you don't. Build better daily routines with smart location nudges.",
+  keywords: [
+    "daily planner",
+    "timeline planner",
+    "routine tracker",
+    "AI reminder app",
+    "time management app",
+    "habit tracker",
+    "location reminders",
+    "Plany app",
+  ],
+  authors: [
+    { name: "Saurav", url: "https://x.com/sauravv_x" },
+    { name: "Dampi Pal", url: "https://x.com/paldampi" },
+  ],
+  creator: "Plany",
+  publisher: "Plany",
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
     title: "Plany | Your day on a timeline",
     description:
       "Plan your day visually. Smart reminders, location nudges, and AI accountability.",
     url: SITE_URL,
     siteName: "Plany",
+    locale: "en_US",
     type: "website",
     images: [
       {
@@ -50,6 +72,17 @@ export const metadata: Metadata = {
     apple: [{ url: "/favicon-180.png", sizes: "180x180", type: "image/png" }],
     shortcut: "/favicon-32.png",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -57,8 +90,58 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const globalSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: "Plany",
+        url: SITE_URL,
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}/plany-icon.png`,
+        },
+        description:
+          "Plany helps you organize your days with clarity, build routines, and stay consistent with a visual timeline.",
+        email: "hq@plany.space",
+        founder: [
+          {
+            "@type": "Person",
+            name: "Saurav",
+            email: "saurav@plany.space",
+            sameAs: "https://x.com/sauravv_x",
+          },
+          {
+            "@type": "Person",
+            name: "Dampi Pal",
+            email: "dampi@plany.space",
+            sameAs: "https://x.com/paldampi",
+          },
+        ],
+        sameAs: ["https://x.com/sauravv_x", "https://x.com/paldampi"],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "Plany",
+        description: "Your day on a timeline",
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-plany-neutral text-plany-primary">
         {children}
         <Analytics />
