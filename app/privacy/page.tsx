@@ -1,14 +1,46 @@
 import Link from "next/link";
 import { LegalPage } from "@/components/legal-page";
+import { Metadata } from "next";
 
-export const metadata = {
+const BASE_URL = "https://www.tryplany.com";
+export const metadata: Metadata = {
   title: "Privacy Policy | Plany",
   description:
-    "Your privacy matters. Plany is designed to keep your personal data safe, secure, and fully within your control. This policy discloses location data used for place reminders.",
+    "Your privacy matters. Plany is designed to keep your personal data safe, secure, and fully within your control. Read our full data privacy policy.",
+  alternates: {
+    canonical: `${BASE_URL}/privacy`,
+  },
+  openGraph: {
+    title: "Privacy Policy | Plany",
+    description: "Learn how Plany keeps your personal data safe and fully under your control.",
+    url: `${BASE_URL}/privacy`,
+    siteName: "Plany",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function PrivacyPage() {
-  return (
+  const privacySchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Plany Privacy Policy",
+    url: `${BASE_URL}/privacy`,
+    description: "Privacy policy regarding user data, location tracking, and security in Plany.",
+    publisher: {
+      "@type": "Organization",
+      name: "Plany",
+      url: BASE_URL,
+    },
+  };
+  return (<>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(privacySchema) }}
+    />
     <LegalPage
       title="Privacy Policy"
       intro="Your privacy matters. Plany is designed to keep your personal data safe, secure, and fully within your control. Last updated: 11 September 2026."
@@ -238,5 +270,6 @@ export default function PrivacyPage() {
         },
       ]}
     />
+  </>
   );
 }

@@ -1,13 +1,62 @@
 import { LegalPage } from "@/components/legal-page";
+import { Metadata } from "next";
 
-export const metadata = {
-  title: "About | Plany",
-  description:
-    "Plany helps you organise your days with clarity, build better routines, and stay consistent with what truly matters.",
+const BASE_URL = "https://www.tryplany.com";
+
+export const metadata: Metadata = {
+  title: "About Plany | Routine & Timeline App",
+  description: "Plany helps you organize your days with clarity, build daily routines, and stay consistent with goals, habit tracking, and effortless workflows.",
+  alternates: {
+    canonical: `${BASE_URL}/about`,
+  },
+  openGraph: {
+    title: "About Plany | Productivity & Routines",
+    description: "Discover how Plany makes daily workflows calm, simple, and intentional.",
+    url: `${BASE_URL}/about`,
+    siteName: "Plany",
+    type: "website",
+  },
 };
 
 export default function AboutPage() {
-  return (
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Plany",
+    url: `${BASE_URL}/about`,
+    mainEntity: {
+      "@type": "Organization",
+      name: "Plany",
+      url: BASE_URL,
+      logo: `${BASE_URL}/icon.png`,
+      description: "Plany helps you organize your days with clarity, build routines, and track habits effortlessly.",
+      founder: [
+        {
+          "@type": "Person",
+          name: "Dampi Pal",
+          email: "dampi@plany.space",
+          sameAs: "https://x.com/paldampi",
+        },
+        {
+          "@type": "Person",
+          name: "Saurav",
+          email: "saurav@plany.space",
+          sameAs: "https://x.com/sauravv_x",
+        },
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "hq@plany.space",
+        contactType: "customer support",
+      },
+    },
+  };
+
+  return (<>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+    />
     <LegalPage
       overline="Company"
       title="About Plany"
@@ -47,5 +96,6 @@ export default function AboutPage() {
         },
       ]}
     />
+  </>
   );
 }
